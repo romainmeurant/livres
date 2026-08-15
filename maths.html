@@ -6,177 +6,42 @@
 <title>Maths - Second-hand Books</title>
 <style>
 * { box-sizing: border-box; }
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef2f5;
-    color: #24323d;
-}
-header {
-    background: #234f70;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #eef2f5; color: #24323d; }
+header { background: #234f70; color: white; padding: 28px 20px; text-align: center; }
 header h1 { margin: 0 0 8px; font-size: 32px; }
 header p { margin: 0; opacity: .9; }
-nav {
-    background: white;
-    padding: 12px 18px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
-}
-nav a {
-    color: #234f70;
-    text-decoration: none;
-    padding: 7px 11px;
-    border-radius: 7px;
-    font-size: 14px;
-}
+nav { background: white; padding: 12px 18px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; box-shadow: 0 2px 7px rgba(0,0,0,.12); }
+nav a { color: #234f70; text-decoration: none; padding: 7px 11px; border-radius: 7px; font-size: 14px; }
 nav a:hover { background: #e8f0f5; }
-.controls {
-    max-width: 1400px;
-    margin: 18px auto 0;
-    padding: 0 20px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-input, select {
-    padding: 11px 13px;
-    border: 1px solid #ccd5db;
-    border-radius: 8px;
-    font-size: 16px;
-}
-.grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 22px;
-}
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-}
+.controls { max-width: 1400px; margin: 18px auto 0; padding: 0 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+input, select { padding: 11px 13px; border: 1px solid #ccd5db; border-radius: 8px; font-size: 16px; }
+.grid { max-width: 1400px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 22px; }
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,.14); }
 .photo { padding: 15px 15px 0; }
-.main {
-    width: 100%;
-    height: 470px;
-    object-fit: contain;
-    background: #fafafa;
-    cursor: pointer;
-}
-.thumbs {
-    display: flex;
-    gap: 7px;
-    overflow-x: auto;
-    padding: 10px 0 3px;
-}
-.thumb {
-    height: 82px;
-    width: 82px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-}
+.main { width: 100%; height: 470px; object-fit: contain; background: #fafafa; cursor: pointer; }
+.thumbs { display: flex; gap: 7px; overflow-x: auto; padding: 10px 0 3px; }
+.thumb { height: 82px; width: 82px; object-fit: cover; cursor: pointer; border: 2px solid #ddd; border-radius: 5px; }
 .thumb:hover { border-color: #234f70; }
 .info { padding: 16px 18px 20px; }
 .info h2 { margin: 0 0 10px; font-size: 22px; }
-.price {
-    color: #c62828;
-    font-size: 34px;
-    font-weight: bold;
-    margin: 5px 0 9px;
-}
-.badge {
-    display: inline-block;
-    padding: 5px 11px;
-    border-radius: 20px;
-    color: white;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
+.price { color: #c62828; font-size: 34px; font-weight: bold; margin: 5px 0 9px; }
+.badge { display: inline-block; padding: 5px 11px; border-radius: 20px; color: white; font-size: 14px; margin-bottom: 8px; }
 .badge.excellent { background: #2e7d32; }
-.badge.very-good { background: #1565c0; }
-.badge.good { background: #ef6c00; }
-.badge.bon { background: #ef6c00; }
-.badge.très-bon { background: #1565c0; }
-.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.very-good, .badge.très-bon { background: #1565c0; }
+.badge.good, .badge.bon { background: #ef6c00; }
+.badge.old, .badge.ancien, .badge.anciens, .badge.très-ancien { background: #757575; }
 .badge.neuf { background: #00897b; }
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    background: #234f70;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
+.btn { display: inline-block; margin-top: 10px; background: #234f70; color: white; text-decoration: none; padding: 10px 15px; border-radius: 8px; }
 .btn:hover { background: #17384f; }
-.home {
-    display: inline-block;
-    margin: 18px 20px 0;
-    color: #234f70;
-    text-decoration: none;
-    font-weight: bold;
-}
-#lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,.88);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-#lightbox img {
-    max-width: 95vw;
-    max-height: 92vh;
-    object-fit: contain;
-}
-#close {
-    position: fixed;
-    top: 15px;
-    right: 22px;
-    color: white;
-    font-size: 38px;
-    cursor: pointer;
-}
-.category-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.category {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    text-decoration: none;
-    color: #24323d;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-    transition: transform .15s;
-}
+#lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.88); justify-content: center; align-items: center; padding: 20px; }
+#lightbox img { max-width: 95vw; max-height: 92vh; object-fit: contain; }
+#close { position: fixed; top: 15px; right: 22px; color: white; font-size: 38px; cursor: pointer; }
+.category-grid { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.category { background: white; border-radius: 15px; padding: 25px; text-decoration: none; color: #24323d; box-shadow: 0 3px 12px rgba(0,0,0,.14); transition: transform .15s; }
 .category:hover { transform: translateY(-3px); }
 .category h2 { margin: 0 0 10px; color: #234f70; }
 .category p { margin: 0; }
-@media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; padding: 12px; }
-    .main { height: 390px; }
-    header h1 { font-size: 26px; }
-}
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; padding: 12px; } .main { height: 390px; } header h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -207,9 +72,9 @@ input, select {
 <main class="grid" id="grid">
 <article class="card" data-title="les maths en tête - analyse + algèbre - gourdon  ancien" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06412.JPG" alt="les maths en tête - analyse + algèbre - Gourdon" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06412.JPG" alt="les maths en tête - analyse + algèbre - Gourdon" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06412.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06412.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -222,9 +87,9 @@ input, select {
 </article>
 <article class="card" data-title="3 livres cpge ecs  anciens" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06407.JPG" alt="3 livres CPGE ECS" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06407.JPG" alt="3 livres CPGE ECS" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06407.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06407.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -237,9 +102,9 @@ input, select {
 </article>
 <article class="card" data-title="cours d&#x27;algèbre + exercices d&#x27;algèbre  anciens" data-price="80">
     <div class="photo">
-        <img class="main" src="DSC06410.JPG" alt="Cours d&#x27;algèbre + exercices d&#x27;algèbre" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06410.JPG" alt="Cours d&#x27;algèbre + exercices d&#x27;algèbre" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06410.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06410.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -252,9 +117,9 @@ input, select {
 </article>
 <article class="card" data-title="analyse réelle et complexe - rudin  ancien" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06409.JPG" alt="Analyse réelle et complexe - Rudin" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06409.JPG" alt="Analyse réelle et complexe - Rudin" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06409.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06409.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -267,9 +132,9 @@ input, select {
 </article>
 <article class="card" data-title="probabilités - barbé-ledoux  ancien" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06413.JPG" alt="Probabilités - Barbé-Ledoux" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06413.JPG" alt="Probabilités - Barbé-Ledoux" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06413.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06413.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -282,9 +147,9 @@ input, select {
 </article>
 <article class="card" data-title="agrégation de maths - épreuve orale - nourdin  ancien" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06411.JPG" alt="Agrégation de maths - épreuve orale - Nourdin" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06411.JPG" alt="Agrégation de maths - épreuve orale - Nourdin" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06411.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06411.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">

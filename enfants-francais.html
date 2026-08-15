@@ -6,177 +6,42 @@
 <title>Livres en français pour enfants - Second-hand Books</title>
 <style>
 * { box-sizing: border-box; }
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef2f5;
-    color: #24323d;
-}
-header {
-    background: #234f70;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #eef2f5; color: #24323d; }
+header { background: #234f70; color: white; padding: 28px 20px; text-align: center; }
 header h1 { margin: 0 0 8px; font-size: 32px; }
 header p { margin: 0; opacity: .9; }
-nav {
-    background: white;
-    padding: 12px 18px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
-}
-nav a {
-    color: #234f70;
-    text-decoration: none;
-    padding: 7px 11px;
-    border-radius: 7px;
-    font-size: 14px;
-}
+nav { background: white; padding: 12px 18px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; box-shadow: 0 2px 7px rgba(0,0,0,.12); }
+nav a { color: #234f70; text-decoration: none; padding: 7px 11px; border-radius: 7px; font-size: 14px; }
 nav a:hover { background: #e8f0f5; }
-.controls {
-    max-width: 1400px;
-    margin: 18px auto 0;
-    padding: 0 20px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-input, select {
-    padding: 11px 13px;
-    border: 1px solid #ccd5db;
-    border-radius: 8px;
-    font-size: 16px;
-}
-.grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 22px;
-}
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-}
+.controls { max-width: 1400px; margin: 18px auto 0; padding: 0 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+input, select { padding: 11px 13px; border: 1px solid #ccd5db; border-radius: 8px; font-size: 16px; }
+.grid { max-width: 1400px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 22px; }
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,.14); }
 .photo { padding: 15px 15px 0; }
-.main {
-    width: 100%;
-    height: 470px;
-    object-fit: contain;
-    background: #fafafa;
-    cursor: pointer;
-}
-.thumbs {
-    display: flex;
-    gap: 7px;
-    overflow-x: auto;
-    padding: 10px 0 3px;
-}
-.thumb {
-    height: 82px;
-    width: 82px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-}
+.main { width: 100%; height: 470px; object-fit: contain; background: #fafafa; cursor: pointer; }
+.thumbs { display: flex; gap: 7px; overflow-x: auto; padding: 10px 0 3px; }
+.thumb { height: 82px; width: 82px; object-fit: cover; cursor: pointer; border: 2px solid #ddd; border-radius: 5px; }
 .thumb:hover { border-color: #234f70; }
 .info { padding: 16px 18px 20px; }
 .info h2 { margin: 0 0 10px; font-size: 22px; }
-.price {
-    color: #c62828;
-    font-size: 34px;
-    font-weight: bold;
-    margin: 5px 0 9px;
-}
-.badge {
-    display: inline-block;
-    padding: 5px 11px;
-    border-radius: 20px;
-    color: white;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
+.price { color: #c62828; font-size: 34px; font-weight: bold; margin: 5px 0 9px; }
+.badge { display: inline-block; padding: 5px 11px; border-radius: 20px; color: white; font-size: 14px; margin-bottom: 8px; }
 .badge.excellent { background: #2e7d32; }
-.badge.very-good { background: #1565c0; }
-.badge.good { background: #ef6c00; }
-.badge.bon { background: #ef6c00; }
-.badge.très-bon { background: #1565c0; }
-.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.very-good, .badge.très-bon { background: #1565c0; }
+.badge.good, .badge.bon { background: #ef6c00; }
+.badge.old, .badge.ancien, .badge.anciens, .badge.très-ancien { background: #757575; }
 .badge.neuf { background: #00897b; }
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    background: #234f70;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
+.btn { display: inline-block; margin-top: 10px; background: #234f70; color: white; text-decoration: none; padding: 10px 15px; border-radius: 8px; }
 .btn:hover { background: #17384f; }
-.home {
-    display: inline-block;
-    margin: 18px 20px 0;
-    color: #234f70;
-    text-decoration: none;
-    font-weight: bold;
-}
-#lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,.88);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-#lightbox img {
-    max-width: 95vw;
-    max-height: 92vh;
-    object-fit: contain;
-}
-#close {
-    position: fixed;
-    top: 15px;
-    right: 22px;
-    color: white;
-    font-size: 38px;
-    cursor: pointer;
-}
-.category-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.category {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    text-decoration: none;
-    color: #24323d;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-    transition: transform .15s;
-}
+#lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.88); justify-content: center; align-items: center; padding: 20px; }
+#lightbox img { max-width: 95vw; max-height: 92vh; object-fit: contain; }
+#close { position: fixed; top: 15px; right: 22px; color: white; font-size: 38px; cursor: pointer; }
+.category-grid { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.category { background: white; border-radius: 15px; padding: 25px; text-decoration: none; color: #24323d; box-shadow: 0 3px 12px rgba(0,0,0,.14); transition: transform .15s; }
 .category:hover { transform: translateY(-3px); }
 .category h2 { margin: 0 0 10px; color: #234f70; }
 .category p { margin: 0; }
-@media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; padding: 12px; }
-    .main { height: 390px; }
-    header h1 { font-size: 26px; }
-}
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; padding: 12px; } .main { height: 390px; } header h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -207,9 +72,9 @@ input, select {
 <main class="grid" id="grid">
 <article class="card" data-title="astérix - 14 albums 70 chacun excellent" data-price="800">
     <div class="photo">
-        <img class="main" src="DSC06461.JPG" alt="Astérix - 14 albums" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06461.JPG" alt="Astérix - 14 albums" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06461.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06461.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -222,9 +87,9 @@ input, select {
 </article>
 <article class="card" data-title="tom-tom et nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33 60 chacun - 500 tous excellent" data-price="500">
     <div class="photo">
-        <img class="main" src="DSC06437.JPG" alt="Tom-Tom et Nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06437.JPG" alt="Tom-Tom et Nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06437.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06437.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -237,9 +102,9 @@ input, select {
 </article>
 <article class="card" data-title="tintin - 6 albums 70 chacun excellent" data-price="350">
     <div class="photo">
-        <img class="main" src="DSC06458.JPG" alt="Tintin - 6 albums" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06458.JPG" alt="Tintin - 6 albums" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06458.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06458.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -252,9 +117,9 @@ input, select {
 </article>
 <article class="card" data-title="ariol - tomes 1,2,8,12,16 60 chacun - 250 tous excellent" data-price="250">
     <div class="photo">
-        <img class="main" src="DSC06438.JPG" alt="Ariol - tomes 1,2,8,12,16" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06438.JPG" alt="Ariol - tomes 1,2,8,12,16" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06438.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06438.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -267,9 +132,9 @@ input, select {
 </article>
 <article class="card" data-title="imageries - 15 livres 20 dhs chacun excellent" data-price="250">
     <div class="photo">
-        <img class="main" src="DSC06728.JPG" alt="Imageries - 15 livres" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06728.JPG" alt="Imageries - 15 livres" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06728.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06728.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -282,9 +147,9 @@ input, select {
 </article>
 <article class="card" data-title="marion duval - 3x3 histoires 80 chacun bon" data-price="200">
     <div class="photo">
-        <img class="main" src="DSC06439.JPG" alt="Marion Duval - 3x3 histoires" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06439.JPG" alt="Marion Duval - 3x3 histoires" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06439.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06439.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -297,9 +162,9 @@ input, select {
 </article>
 <article class="card" data-title="mortelle adèle - tomes 6,15,16,17 60 chacun excellent" data-price="200">
     <div class="photo">
-        <img class="main" src="DSC06440.JPG" alt="Mortelle Adèle - tomes 6,15,16,17" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06440.JPG" alt="Mortelle Adèle - tomes 6,15,16,17" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06440.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06440.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -312,9 +177,9 @@ input, select {
 </article>
 <article class="card" data-title="boule et bill - 3 albums 70 chacun excellent" data-price="200">
     <div class="photo">
-        <img class="main" src="DSC06463.JPG" alt="Boule et bill - 3 albums" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06463.JPG" alt="Boule et bill - 3 albums" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06463.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06463.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -327,9 +192,9 @@ input, select {
 </article>
 <article class="card" data-title="lola - 6 livres 40 chacun - couverture cartonnée excellent" data-price="200">
     <div class="photo">
-        <img class="main" src="DSC06511.JPG" alt="Lola - 6 livres" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06511.JPG" alt="Lola - 6 livres" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06511.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06511.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -342,11 +207,11 @@ input, select {
 </article>
 <article class="card" data-title="je commence à lire - 17 livres 10 dhs chacun excellent" data-price="120">
     <div class="photo">
-        <img class="main" src="DSC06576.JPG" alt="Je commence à lire - 17 livres" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06576.JPG" alt="Je commence à lire - 17 livres" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06576.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06577.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06579.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06576.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06577.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06579.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -359,11 +224,11 @@ input, select {
 </article>
 <article class="card" data-title="j&#x27;apprends à lire avec sami et julie - 11 livres 15 dhs chacun excellent" data-price="120">
     <div class="photo">
-        <img class="main" src="DSC06580.JPG" alt="J&#x27;apprends à lire avec Sami et Julie - 11 livres" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06580.JPG" alt="J&#x27;apprends à lire avec Sami et Julie - 11 livres" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06580.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06581.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06582.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06580.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06581.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06582.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -376,9 +241,9 @@ input, select {
 </article>
 <article class="card" data-title="pourquoi ? quand ? comment ?  excellent" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06464.JPG" alt="Pourquoi ? Quand ? Comment ?" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06464.JPG" alt="Pourquoi ? Quand ? Comment ?" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06464.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06464.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -391,11 +256,11 @@ input, select {
 </article>
 <article class="card" data-title="histoires du soir pour filles rebelles  excellent" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06470.JPG" alt="Histoires du soir pour filles rebelles" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06470.JPG" alt="Histoires du soir pour filles rebelles" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06470.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06545.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06546.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06470.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06545.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06546.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -408,11 +273,11 @@ input, select {
 </article>
 <article class="card" data-title="dis-moi - la nature  excellent" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06583.JPG" alt="Dis-moi - la nature" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06583.JPG" alt="Dis-moi - la nature" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06583.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06584.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06585.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06583.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06584.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06585.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -425,9 +290,9 @@ input, select {
 </article>
 <article class="card" data-title="cédric - temps de chien  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06457.JPG" alt="Cédric - Temps de chien" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06457.JPG" alt="Cédric - Temps de chien" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06457.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06457.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -440,9 +305,9 @@ input, select {
 </article>
 <article class="card" data-title="comment devenir un élève modèle  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06487.JPG" alt="Comment devenir un élève modèle" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06487.JPG" alt="Comment devenir un élève modèle" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06487.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06487.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -455,9 +320,9 @@ input, select {
 </article>
 <article class="card" data-title="chien pourri aux jeux olympiques  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06488.JPG" alt="Chien pourri aux jeux olympiques" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06488.JPG" alt="Chien pourri aux jeux olympiques" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06488.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06488.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -470,9 +335,9 @@ input, select {
 </article>
 <article class="card" data-title="mémoires de la forêt  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06489.JPG" alt="Mémoires de la forêt" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06489.JPG" alt="Mémoires de la forêt" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06489.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06489.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -485,9 +350,9 @@ input, select {
 </article>
 <article class="card" data-title="béatrice l&#x27;intrépide  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06490.JPG" alt="Béatrice l&#x27;intrépide" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06490.JPG" alt="Béatrice l&#x27;intrépide" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06490.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06490.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -500,9 +365,9 @@ input, select {
 </article>
 <article class="card" data-title="oscar et carrosse - 3 histoires  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06491.JPG" alt="Oscar et Carrosse - 3 histoires" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06491.JPG" alt="Oscar et Carrosse - 3 histoires" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06491.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06491.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -515,9 +380,9 @@ input, select {
 </article>
 <article class="card" data-title="frankie quel cinéma !  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06493.JPG" alt="Frankie Quel cinéma !" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06493.JPG" alt="Frankie Quel cinéma !" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06493.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06493.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -530,9 +395,9 @@ input, select {
 </article>
 <article class="card" data-title="pitsi - mitsi  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06494.JPG" alt="Pitsi - Mitsi" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06494.JPG" alt="Pitsi - Mitsi" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06494.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06494.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -545,9 +410,9 @@ input, select {
 </article>
 <article class="card" data-title="bibliobus - corps et santé  bon" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06501.JPG" alt="Bibliobus - Corps et santé" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06501.JPG" alt="Bibliobus - Corps et santé" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06501.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06501.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -560,9 +425,9 @@ input, select {
 </article>
 <article class="card" data-title="bibliobus - la perle phosphorescente  bon" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06502.JPG" alt="Bibliobus - La perle phosphorescente" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06502.JPG" alt="Bibliobus - La perle phosphorescente" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06502.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06502.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -575,10 +440,10 @@ input, select {
 </article>
 <article class="card" data-title="la longue marche des dindes  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06512.JPG" alt="La longue marche des dindes" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06512.JPG" alt="La longue marche des dindes" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06512.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06513.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06512.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06513.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -591,10 +456,10 @@ input, select {
 </article>
 <article class="card" data-title="radio banane  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06514.JPG" alt="Radio banane" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06514.JPG" alt="Radio banane" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06514.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06515.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06514.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06515.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -607,10 +472,10 @@ input, select {
 </article>
 <article class="card" data-title="je veux un chien  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06516.JPG" alt="Je veux un chien" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06516.JPG" alt="Je veux un chien" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06516.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06517.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06516.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06517.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -623,10 +488,10 @@ input, select {
 </article>
 <article class="card" data-title="blaise, isée et le tue-planète  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06518.JPG" alt="Blaise, Isée et le Tue-Planète" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06518.JPG" alt="Blaise, Isée et le Tue-Planète" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06518.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06519.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06518.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06519.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -639,10 +504,10 @@ input, select {
 </article>
 <article class="card" data-title="le vol du grizzly  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06520.JPG" alt="Le vol du Grizzly" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06520.JPG" alt="Le vol du Grizzly" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06520.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06521.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06520.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06521.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -655,10 +520,10 @@ input, select {
 </article>
 <article class="card" data-title="le petit robot de bois et la princesse bûche  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06522.JPG" alt="Le petit robot de bois et la princesse bûche" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06522.JPG" alt="Le petit robot de bois et la princesse bûche" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06522.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06523.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06522.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06523.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -671,10 +536,10 @@ input, select {
 </article>
 <article class="card" data-title="trois ou quatre histoires de mousquetaires  excellent" data-price="60">
     <div class="photo">
-        <img class="main" src="DSC06524.JPG" alt="Trois ou quatre histoires de mousquetaires" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06524.JPG" alt="Trois ou quatre histoires de mousquetaires" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06524.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06525.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06524.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06525.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -687,9 +552,9 @@ input, select {
 </article>
 <article class="card" data-title="le petit prince  excellent" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06506.JPG" alt="Le petit prince" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06506.JPG" alt="Le petit prince" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06506.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06506.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -702,11 +567,11 @@ input, select {
 </article>
 <article class="card" data-title="boucle d&#x27;or et les 3 ours pages cartonnées excellent" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06508.JPG" alt="Boucle d&#x27;or et les 3 ours" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06508.JPG" alt="Boucle d&#x27;or et les 3 ours" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06508.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06509.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06510.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06508.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06509.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06510.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -719,10 +584,10 @@ input, select {
 </article>
 <article class="card" data-title="boîte à questions 9/10 ans  excellent" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06586.JPG" alt="Boîte à questions 9/10 ans" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06586.JPG" alt="Boîte à questions 9/10 ans" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06586.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06587.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06586.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06587.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -735,9 +600,9 @@ input, select {
 </article>
 <article class="card" data-title="le club de la pluie brave les tempêtes  excellent" data-price="40">
     <div class="photo">
-        <img class="main" src="DSC06492.JPG" alt="Le club de la pluie brave les tempêtes" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06492.JPG" alt="Le club de la pluie brave les tempêtes" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06492.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06492.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -750,9 +615,9 @@ input, select {
 </article>
 <article class="card" data-title="le club de la pluie et les forbans de la nuit  excellent" data-price="40">
     <div class="photo">
-        <img class="main" src="DSC06495.JPG" alt="Le club de la pluie et les forbans de la nuit" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06495.JPG" alt="Le club de la pluie et les forbans de la nuit" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06495.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06495.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -765,10 +630,10 @@ input, select {
 </article>
 <article class="card" data-title="je sais lire - les petites poules - 4 livres 10 dhs chacun excellent" data-price="40">
     <div class="photo">
-        <img class="main" src="DSC06588.JPG" alt="Je sais lire - les petites poules - 4 livres" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06588.JPG" alt="Je sais lire - les petites poules - 4 livres" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06588.JPG" alt="" onclick="swapImage(this)" loading="lazy">
-<img class="thumb" src="DSC06589.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06588.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="photos/DSC06589.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -781,9 +646,9 @@ input, select {
 </article>
 <article class="card" data-title="adieu pompéi  bon" data-price="30">
     <div class="photo">
-        <img class="main" src="DSC06496.JPG" alt="Adieu Pompéi" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06496.JPG" alt="Adieu Pompéi" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06496.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06496.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -796,9 +661,9 @@ input, select {
 </article>
 <article class="card" data-title="pompéi, la ville ensevelie  bon" data-price="30">
     <div class="photo">
-        <img class="main" src="DSC06497.JPG" alt="Pompéi, la ville ensevelie" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06497.JPG" alt="Pompéi, la ville ensevelie" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06497.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06497.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -811,9 +676,9 @@ input, select {
 </article>
 <article class="card" data-title="le système solaire  bon" data-price="30">
     <div class="photo">
-        <img class="main" src="DSC06498.JPG" alt="Le système solaire" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06498.JPG" alt="Le système solaire" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06498.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06498.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -826,9 +691,9 @@ input, select {
 </article>
 <article class="card" data-title="planète en danger  bon" data-price="30">
     <div class="photo">
-        <img class="main" src="DSC06499.JPG" alt="Planète en danger" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06499.JPG" alt="Planète en danger" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06499.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06499.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -841,9 +706,9 @@ input, select {
 </article>
 <article class="card" data-title="osbserver le ciel  bon" data-price="30">
     <div class="photo">
-        <img class="main" src="DSC06500.JPG" alt="Osbserver le ciel" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06500.JPG" alt="Osbserver le ciel" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06500.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06500.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -856,9 +721,9 @@ input, select {
 </article>
 <article class="card" data-title="heidi  excellent" data-price="20">
     <div class="photo">
-        <img class="main" src="DSC06441.JPG" alt="Heidi" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06441.JPG" alt="Heidi" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06441.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06441.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -871,9 +736,9 @@ input, select {
 </article>
 <article class="card" data-title="voyage au centre de la terre  excellent" data-price="20">
     <div class="photo">
-        <img class="main" src="DSC06442.JPG" alt="Voyage au centre de la terre" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06442.JPG" alt="Voyage au centre de la terre" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06442.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06442.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -886,9 +751,9 @@ input, select {
 </article>
 <article class="card" data-title="les malheurs de sophie  excellent" data-price="20">
     <div class="photo">
-        <img class="main" src="DSC06443.JPG" alt="Les malheurs de Sophie" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06443.JPG" alt="Les malheurs de Sophie" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06443.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06443.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">

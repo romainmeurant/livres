@@ -6,177 +6,42 @@
 <title>Cuisine - Second-hand Books</title>
 <style>
 * { box-sizing: border-box; }
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef2f5;
-    color: #24323d;
-}
-header {
-    background: #234f70;
-    color: white;
-    padding: 28px 20px;
-    text-align: center;
-}
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #eef2f5; color: #24323d; }
+header { background: #234f70; color: white; padding: 28px 20px; text-align: center; }
 header h1 { margin: 0 0 8px; font-size: 32px; }
 header p { margin: 0; opacity: .9; }
-nav {
-    background: white;
-    padding: 12px 18px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
-}
-nav a {
-    color: #234f70;
-    text-decoration: none;
-    padding: 7px 11px;
-    border-radius: 7px;
-    font-size: 14px;
-}
+nav { background: white; padding: 12px 18px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; box-shadow: 0 2px 7px rgba(0,0,0,.12); }
+nav a { color: #234f70; text-decoration: none; padding: 7px 11px; border-radius: 7px; font-size: 14px; }
 nav a:hover { background: #e8f0f5; }
-.controls {
-    max-width: 1400px;
-    margin: 18px auto 0;
-    padding: 0 20px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-input, select {
-    padding: 11px 13px;
-    border: 1px solid #ccd5db;
-    border-radius: 8px;
-    font-size: 16px;
-}
-.grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 22px;
-}
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-}
+.controls { max-width: 1400px; margin: 18px auto 0; padding: 0 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+input, select { padding: 11px 13px; border: 1px solid #ccd5db; border-radius: 8px; font-size: 16px; }
+.grid { max-width: 1400px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 22px; }
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,.14); }
 .photo { padding: 15px 15px 0; }
-.main {
-    width: 100%;
-    height: 470px;
-    object-fit: contain;
-    background: #fafafa;
-    cursor: pointer;
-}
-.thumbs {
-    display: flex;
-    gap: 7px;
-    overflow-x: auto;
-    padding: 10px 0 3px;
-}
-.thumb {
-    height: 82px;
-    width: 82px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-}
+.main { width: 100%; height: 470px; object-fit: contain; background: #fafafa; cursor: pointer; }
+.thumbs { display: flex; gap: 7px; overflow-x: auto; padding: 10px 0 3px; }
+.thumb { height: 82px; width: 82px; object-fit: cover; cursor: pointer; border: 2px solid #ddd; border-radius: 5px; }
 .thumb:hover { border-color: #234f70; }
 .info { padding: 16px 18px 20px; }
 .info h2 { margin: 0 0 10px; font-size: 22px; }
-.price {
-    color: #c62828;
-    font-size: 34px;
-    font-weight: bold;
-    margin: 5px 0 9px;
-}
-.badge {
-    display: inline-block;
-    padding: 5px 11px;
-    border-radius: 20px;
-    color: white;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
+.price { color: #c62828; font-size: 34px; font-weight: bold; margin: 5px 0 9px; }
+.badge { display: inline-block; padding: 5px 11px; border-radius: 20px; color: white; font-size: 14px; margin-bottom: 8px; }
 .badge.excellent { background: #2e7d32; }
-.badge.very-good { background: #1565c0; }
-.badge.good { background: #ef6c00; }
-.badge.bon { background: #ef6c00; }
-.badge.très-bon { background: #1565c0; }
-.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.very-good, .badge.très-bon { background: #1565c0; }
+.badge.good, .badge.bon { background: #ef6c00; }
+.badge.old, .badge.ancien, .badge.anciens, .badge.très-ancien { background: #757575; }
 .badge.neuf { background: #00897b; }
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    background: #234f70;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
+.btn { display: inline-block; margin-top: 10px; background: #234f70; color: white; text-decoration: none; padding: 10px 15px; border-radius: 8px; }
 .btn:hover { background: #17384f; }
-.home {
-    display: inline-block;
-    margin: 18px 20px 0;
-    color: #234f70;
-    text-decoration: none;
-    font-weight: bold;
-}
-#lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,.88);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-#lightbox img {
-    max-width: 95vw;
-    max-height: 92vh;
-    object-fit: contain;
-}
-#close {
-    position: fixed;
-    top: 15px;
-    right: 22px;
-    color: white;
-    font-size: 38px;
-    cursor: pointer;
-}
-.category-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.category {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    text-decoration: none;
-    color: #24323d;
-    box-shadow: 0 3px 12px rgba(0,0,0,.14);
-    transition: transform .15s;
-}
+#lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.88); justify-content: center; align-items: center; padding: 20px; }
+#lightbox img { max-width: 95vw; max-height: 92vh; object-fit: contain; }
+#close { position: fixed; top: 15px; right: 22px; color: white; font-size: 38px; cursor: pointer; }
+.category-grid { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.category { background: white; border-radius: 15px; padding: 25px; text-decoration: none; color: #24323d; box-shadow: 0 3px 12px rgba(0,0,0,.14); transition: transform .15s; }
 .category:hover { transform: translateY(-3px); }
 .category h2 { margin: 0 0 10px; color: #234f70; }
 .category p { margin: 0; }
-@media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; padding: 12px; }
-    .main { height: 390px; }
-    header h1 { font-size: 26px; }
-}
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; padding: 12px; } .main { height: 390px; } header h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -207,9 +72,9 @@ input, select {
 <main class="grid" id="grid">
 <article class="card" data-title="patisserie - felder - ancienne édition (gros pavé) bon" data-price="200">
     <div class="photo">
-        <img class="main" src="DSC06416.JPG" alt="Patisserie - Felder - ancienne édition" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06416.JPG" alt="Patisserie - Felder - ancienne édition" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06416.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06416.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -222,9 +87,9 @@ input, select {
 </article>
 <article class="card" data-title="la cuisine de référence  très bon" data-price="150">
     <div class="photo">
-        <img class="main" src="DSC06415.JPG" alt="La cuisine de référence" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06415.JPG" alt="La cuisine de référence" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06415.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06415.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -237,9 +102,9 @@ input, select {
 </article>
 <article class="card" data-title="pièce unique - felder  très bon" data-price="100">
     <div class="photo">
-        <img class="main" src="DSC06420.JPG" alt="Pièce unique - Felder" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06420.JPG" alt="Pièce unique - Felder" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06420.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06420.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -252,9 +117,9 @@ input, select {
 </article>
 <article class="card" data-title="l&#x27;atelier des chefs  très bon" data-price="80">
     <div class="photo">
-        <img class="main" src="DSC06418.JPG" alt="L&#x27;atelier des chefs" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06418.JPG" alt="L&#x27;atelier des chefs" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06418.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06418.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -267,9 +132,9 @@ input, select {
 </article>
 <article class="card" data-title="l&#x27;atelier du hamburger  très bon" data-price="80">
     <div class="photo">
-        <img class="main" src="DSC06419.JPG" alt="L&#x27;atelier du hamburger" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06419.JPG" alt="L&#x27;atelier du hamburger" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06419.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06419.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -282,9 +147,9 @@ input, select {
 </article>
 <article class="card" data-title="1000 recettes de dessert  bon" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06417.JPG" alt="1000 recettes de dessert" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06417.JPG" alt="1000 recettes de dessert" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06417.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06417.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
@@ -297,9 +162,9 @@ input, select {
 </article>
 <article class="card" data-title="tapas (en anglais)  bon" data-price="50">
     <div class="photo">
-        <img class="main" src="DSC06421.JPG" alt="Tapas (en anglais)" loading="lazy" onclick="openImage(this.src)">
+        <img class="main" src="photos/DSC06421.JPG" alt="Tapas (en anglais)" loading="lazy" onclick="openImage(this.src)">
         <div class="thumbs">
-            <img class="thumb" src="DSC06421.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+            <img class="thumb" src="photos/DSC06421.JPG" alt="" onclick="swapImage(this)" loading="lazy">
         </div>
     </div>
     <div class="info">
