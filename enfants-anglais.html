@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English books for children - Second-hand Books</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f5;
+    color: #24323d;
+}
+header {
+    background: #234f70;
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+header h1 { margin: 0 0 8px; font-size: 32px; }
+header p { margin: 0; opacity: .9; }
+nav {
+    background: white;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+}
+nav a {
+    color: #234f70;
+    text-decoration: none;
+    padding: 7px 11px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+nav a:hover { background: #e8f0f5; }
+.controls {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+input, select {
+    padding: 11px 13px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+}
+.photo { padding: 15px 15px 0; }
+.main {
+    width: 100%;
+    height: 470px;
+    object-fit: contain;
+    background: #fafafa;
+    cursor: pointer;
+}
+.thumbs {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 10px 0 3px;
+}
+.thumb {
+    height: 82px;
+    width: 82px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+.thumb:hover { border-color: #234f70; }
+.info { padding: 16px 18px 20px; }
+.info h2 { margin: 0 0 10px; font-size: 22px; }
+.price {
+    color: #c62828;
+    font-size: 34px;
+    font-weight: bold;
+    margin: 5px 0 9px;
+}
+.badge {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.badge.excellent { background: #2e7d32; }
+.badge.very-good { background: #1565c0; }
+.badge.good { background: #ef6c00; }
+.badge.bon { background: #ef6c00; }
+.badge.très-bon { background: #1565c0; }
+.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.neuf { background: #00897b; }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #234f70;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.btn:hover { background: #17384f; }
+.home {
+    display: inline-block;
+    margin: 18px 20px 0;
+    color: #234f70;
+    text-decoration: none;
+    font-weight: bold;
+}
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.88);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+#close {
+    position: fixed;
+    top: 15px;
+    right: 22px;
+    color: white;
+    font-size: 38px;
+    cursor: pointer;
+}
+.category-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.category {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    color: #24323d;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+    transition: transform .15s;
+}
+.category:hover { transform: translateY(-3px); }
+.category h2 { margin: 0 0 10px; color: #234f70; }
+.category p { margin: 0; }
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; padding: 12px; }
+    .main { height: 390px; }
+    header h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>English books for children</h1>
+    <p>33 références</p>
+</header>
+<nav>
+<a href="index.html">Home</a>
+<a href="langue.html">Langue</a>
+<a href="maths.html">Maths</a>
+<a href="cuisine.html">Cuisine</a>
+<a href="reconversion.html">Reconversion ?</a>
+<a href="informatique.html">Informatique</a>
+<a href="enfants-francais.html">Livres en français pour enfants</a>
+<a href="livres-francais.html">Livres en français</a>
+<a href="enfants-anglais.html" style="font-weight:bold;background:#e8f0f5;">English books for children</a>
+<a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+</nav>
+<div class="controls">
+    <input id="search" type="search" placeholder="Search...">
+    <select id="sort">
+        <option value="desc">Price high → low</option>
+        <option value="asc">Price low → high</option>
+        <option value="title">Title A → Z</option>
+    </select>
+</div>
+<main class="grid" id="grid">
+<article class="card" data-title="complete collection &quot;elephant and piggie&quot; - 25 books excellent for early readers very good" data-price="600">
+    <div class="photo">
+        <img class="main" src="DSC06432.JPG" alt="Complete collection &quot;Elephant and Piggie&quot; - 25 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06432.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06433.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06434.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06435.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06436.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Complete collection &quot;Elephant and Piggie&quot; - 25 books</h2>
+        <div class="price">600 DHS</div>
+        <span class="badge very-good">Very good</span>
+        <p>Excellent for early readers</p>
+        <a class="btn" href="https://www.amazon.com/Elephant-Piggie-Complete-Collection-Book/dp/136802131X?crid=1JH8GZKLRVH6W\&amp;dib=eyJ2IjoiMSJ9.aXHhOFxFBGDOhWlp3grEJN0oT4RXFfznhX-csGoDqPlaz8Rdge17XZqJqHeAmwrD5yWQ7qvO6WHlRlnZKtQQjg5hPphzsZUwedr7ttCr9ulQyMtTo7Qt5VgdjLhX3MsbCOTB4mYM7UauJGqfWwsFYHCadUeMbH02K7uJYtmgYsWhVXNT6L7L90yx3v6wNFdVQDEA5CXzxZY8k69jV4kbMMqz9aTDMNA-j2QAq_6iPVg.kDP3cn18HbN7N29T1AMpvqeBRoKiaP2XqzTBax3KWj8\&amp;dib_tag=se\&amp;keywords=piggie+gerald\&amp;qid=1784815457\&amp;sprefix=piggie+gerald%2Caps%2C1000\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="tintin - 23 volumes paperback - without the box excellent" data-price="600">
+    <div class="photo">
+        <img class="main" src="DSC06544.JPG" alt="Tintin - 23 volumes" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06544.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06453.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06567.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06568.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Tintin - 23 volumes</h2>
+        <div class="price">600 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>Paperback - without the box</p>
+        <a class="btn" href="https://www.amazon.co.uk/Tintin-Paperback-Boxed-Set-titles/dp/1405294574?crid=21ODO968MRY4A\&amp;dib=eyJ2IjoiMSJ9.ytHLXidTlk37r4T_XfLazki5nXyv5MI26ijsBcvTNcMyHUZkzJ2pYvfwEz1S1eidqVSf9vWBj0J3W-RbYsCEf5K2w8pRyBfkbuicz6v_GT11aoyXzzPOEygVowzcf_ck49lz9AeNRNXQ4Dm3_k8k2b-glf-qwRQF_Gn48JmaUZBJZ4G98lhn7vzexs8YI-0-gj0kpVL0EfEayD1KXXJRSYMn6K6val322uG7mbwZ1hE.EIzUAvLYMP_8UEEBAYOBT7NArRneXPjdX7GY0kaqaQU\&amp;dib_tag=se\&amp;keywords=tintin\&amp;qid=1784911817\&amp;sprefix=tintin%2Caps%2C193\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="diary of a wimpy kid - 19 books 30 each - 500 all excellent" data-price="500">
+    <div class="photo">
+        <img class="main" src="DSC06450.JPG" alt="Diary of a wimpy kid - 19 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06450.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06454.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Diary of a wimpy kid - 19 books</h2>
+        <div class="price">500 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>30 each - 500 all</p>
+        <a class="btn" href="https://www.amazon.co.uk/Diary-Wimpy-Kid-Getaway-book/dp/0141385251?crid=9C83R5HUBD5G\&amp;dib=eyJ2IjoiMSJ9.WFZ8ufXsnPnUuzsw2pNUz4tVIO1tcVUAhQTDM9DkmNGjFF7hCwHtFoeaa8i1NeAcMOI-A4VizBmtbmi8M-Q-ErQGYtIhjlockkrHzkj4OZmFvnIJwf56DtF-u9pxrMbfpVerlKRGYKIFrkpD-ZZYxVRQ4neHIJbQIUWL2vN1TFRQ4_bt0AKyJ2F9V97I-ATHeAMP6GbDqB1_jvoNIikBHyisxbFhQ7EEwzYiciYiGUs.ibIzsHltAITTDekebkj4znd1WsnAOeVSgiIDfG6TgWE\&amp;dib_tag=se\&amp;keywords=diary+of+a+wimpy+kid\&amp;qid=1784816833\&amp;sprefix=diary+of+a+wimpy+ki%2Caps%2C202\&amp;sr=8-10" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="billy and buddy - volume 1 to 9 50 each - 400 all - paperback excellent" data-price="400">
+    <div class="photo">
+        <img class="main" src="DSC06569.JPG" alt="Billy and Buddy - Volume 1 to 9" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06569.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06570.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Billy and Buddy - Volume 1 to 9</h2>
+        <div class="price">400 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>50 each - 400 all - Paperback</p>
+        <a class="btn" href="https://www.amazon.co.uk/Billy-Buddy-Vol-Symphony-Major/dp/1800441290?crid=1K693NL529M0Z\&amp;dib=eyJ2IjoiMSJ9.MhVsVjTL7KOZQqOUj1pf82_ptSgM1G9PnSkeBgXAimk5JcFr4M6dswnesJjBqrkQ92W7UprOMFsv-6AwUxncoMVVn9kFArSd98v1tycpm-_9Jx5PVRKz-gUso7SuIPKhvrd4Q50eH7IVILkjDhmf1oGn7OjTwe_0vZGMB2o1J6q_HZ6VclI-89s6s7wOEyrAByAPHkp6xryn9_s7qpWLdY-p75_cDnjS2zD9ssFVLUo.noMvBboQuLjskOKgX99jy1WFskZMsNewPng9oEg3EO4\&amp;dib_tag=se\&amp;keywords=billy+and+buddy\&amp;qid=1784911843\&amp;sprefix=billy+and+buddy%2Caps%2C210\&amp;sr=8-3" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="collection sherlock holmes - 30 livres  excellent" data-price="400">
+    <div class="photo">
+        <img class="main" src="DSC06726.JPG" alt="Collection Sherlock Holmes - 30 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06726.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06727.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Collection Sherlock Holmes - 30 livres</h2>
+        <div class="price">400 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Sherlock-Holmes-Childrens-Collection-Baskervilles/dp/1782269525?crid=FB6RGEGT9DSR\&amp;dib=eyJ2IjoiMSJ9.8jWbnsmsWKwJyPGRYxMLafr7amRSq-etvxSgE66PQiG9nP4mpRCGki90sdqi8osVOpPg7XlNLz9boy_YAPxIHgxuW8IoJOL7ih4GFLXroMLgS_-8TVt3zNj7FqwQdEPKKcSVIDc_IRZyiEMPP9cj4I5W6YcDGmeIKProdU0oagF_TFBUigpF5gzvpq8X7PZmzmDhOODst1v891Sh0oZgth5TLh5WhdmWdrZcEBRto_M.qwuJZ-zbPdUi4RQOqPQXVXmAFtGR1a5uFpMQ_TcVQ1o\&amp;dib_tag=se\&amp;keywords=sherlock+holmes+children\&amp;qid=1786370389\&amp;sprefix=sherlock+holmes+children%2Caps%2C143\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="roald dahl - 12 books - 30 each illustrated - black and white good" data-price="300">
+    <div class="photo">
+        <img class="main" src="DSC06543.JPG" alt="Roald Dahl - 12 books - 30 each" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06543.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06575.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Roald Dahl - 12 books - 30 each</h2>
+        <div class="price">300 DHS</div>
+        <span class="badge good">Good</span>
+        <p>Illustrated - black and white</p>
+        
+    </div>
+</article>
+<article class="card" data-title="oxford read and discover - 10 books 40 each - 300 all very good" data-price="300">
+    <div class="photo">
+        <img class="main" src="DSC06624.JPG" alt="Oxford read and discover - 10 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06624.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06625.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06626.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06627.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Oxford read and discover - 10 books</h2>
+        <div class="price">300 DHS</div>
+        <span class="badge very-good">Very good</span>
+        <p>40 each - 300 all</p>
+        <a class="btn" href="https://www.amazon.co.uk/Your-Senses-Oxford-Discover-Level-ebook/dp/B06WD6638P?crid=1ARLU86JEV9HQ\&amp;dib=eyJ2IjoiMSJ9.wCxBQO2CXk0NHUk3XBRfVg10NNvIbnI16MEE4Ok_zPAQP4bKbIWKrQVRCgnZmtR3yAbngfxrgkKCUBCFK_dID-85Wt0N0V3OxbNyQXtSdhhb59QXdjuZ4ryZO8Za1rMh5t0foaa_2V2m0zZ6vBVdtNDLJCiJczTtrmafWjxdUSV-5EvEMizRWQR64EEREC6G4xrQwXLneQXY1TthdnsGEIy36cGHKf_bXEfbfQvxu5k.WdSC33WfavCmOXOx-TruIAWjcmPfxnTpWnL1I26QUhM\&amp;dib_tag=se\&amp;keywords=oxford+read+and+discover\&amp;qid=1784992263\&amp;sprefix=ocford+read+and+disco%2Caps%2C207\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="easy reading - 5 books 30 each excellent" data-price="120">
+    <div class="photo">
+        <img class="main" src="DSC06619.JPG" alt="Easy reading - 5 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06619.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06620.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06621.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06622.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06623.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Easy reading - 5 books</h2>
+        <div class="price">120 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>30 each</p>
+        <a class="btn" href="https://www.amazon.co.uk/The-Three-Little-Pigs/dp/8467766948?crid=3S96JT1QSYX9T\&amp;dib=eyJ2IjoiMSJ9.-Uhfa3wk9ZhyK06iCpplmr9xOUfhwExzzIhX8SX_TGbxS16FWxkpujyVmzWEle0bWis9tN0_CHk9NDKveZIrklEoRllMzADoskTr70dgmAKD6CJGXmio4rbo4Nx_E8qZj4e_6HuxY2h6Ys2oEiBVXVds_inxqVLSJRwcxxfqAn1IrngduEZ_LLYv1ovuBa5tERygT73mSKBsMtxOK8nXo8Imds0XXxkugjzwyrhhRgA.EZV7qea_5CD6ALDwLRLoDfBGXuGVWX2tY8RwLPVTBRA\&amp;dib_tag=se\&amp;keywords=easy+reading+susaeta\&amp;qid=1784991982\&amp;sprefix=easy+readingsusaeta%2Caps%2C157\&amp;sr=8-3" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="mr men - 33 books  good" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06444.JPG" alt="Mr Men - 33 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06444.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Mr Men - 33 books</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge good">Good</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="eric carle - 3 books 40 each excellent" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06456.JPG" alt="Eric Carle - 3 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06456.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Eric Carle - 3 books</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>40 each</p>
+        <a class="btn" href="https://www.amazon.co.uk/Tiny-Seed-Picture-Puffin/dp/014055713X?crid=3EL2K1ICBJ9LC\&amp;dib=eyJ2IjoiMSJ9.iApnhkUzdfOECF-y39lFeUSjKfLABBTzeymFp-LFfDRicu2Oz5xT_41OEl-WqOteIWAXqAXhjdZX2N-eUQWfNS0ird-8dsM8wuGIDLR5AgATZ7mDmt4ZL5G4nuO7knKj-IlTK7v7AJ4M1ZsAeMUXPCiSCUHzhur6keydq1_aGzfDF94yloZSLBYBq0vySNviu2MjiypSfEw0uxMuzIIbWVQX2bLlJZ5rwP_XOCvEK1HAYAXDAp_Bkaoq1Hhac-GQdGuq39jeDOx4frDhWYKeFlg9YH4m7CCcXbnUGMXXk6w.FYd7pxvjJVcy6fEH6CweN9BRRJXqZAAIVYqVnvB8MJI\&amp;dib_tag=se\&amp;keywords=tiny+seed\&amp;qid=1784912162\&amp;sprefix=tiny+see%2Caps%2C161\&amp;sr=8-3" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="peter bunzl - 4 books  good" data-price="80">
+    <div class="photo">
+        <img class="main" src="DSC06618.JPG" alt="Peter Bunzl - 4 books" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06618.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Peter Bunzl - 4 books</h2>
+        <div class="price">80 DHS</div>
+        <span class="badge good">Good</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="a walk in london  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06476.JPG" alt="A walk in London" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06476.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06477.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>A walk in London</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Walk-London-Salvatore-Rubbino/dp/140633779X?crid=3SGOVNRFECU5V\&amp;dib=eyJ2IjoiMSJ9.wZ4iKbUnFOFRSy-kyk2fTHh1xWo7mxOEpfVqXGK8WIpujmZ78YJBzPhikL24XdKtnMeUwtIIloxPgfiWnOY-ICq20AuFLqNNShx8HSQqxaal5hBsZgFVO3hPpxmYSISg-zoemv4xe9DUzADsF8yIjJSkLLT-9a4MwFMq9G9Mnh-XH8Og_WptYyVWiKBgbylTmhKj2xlFd8DH_3fBlx9836Sw9EtmDMhmpZQ2ajrHP0M.0ms69m6duGeZHKYsE4fRpqF9YZwmEXn8hWHv1MPDyR0\&amp;dib_tag=se\&amp;keywords=a+walk+in+london\&amp;qid=1784913392\&amp;sprefix=a+walk+in+london%2Caps%2C153\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="oxford first dictionnary  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06481.JPG" alt="Oxford first dictionnary" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06481.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06482.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06573.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Oxford first dictionnary</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Oxford-First-Dictionary-Dictionaries/dp/0192767216?crid=ETGUD9FTNLZ3\&amp;dib=eyJ2IjoiMSJ9.MitP6Ypn07AO8pz5zgQkH8rDqX53qX4Q-RzaFPuN9Va2ucG44uHzNn5dhuHCd4hv7AaCVLzqtJ-TDhp0R0n1jfV7otDD6V4p2iZKl90acWFyUxlrswt_s1PZLzE2Y_LI2ZHuIjSD0qHmx-MlLE6f8xamQZ2NyX3ArqRiLbKGjSkMWr3-v7ZuxCZGSbdRDvhfA_ncssgL7Ono_DVLHtMcLznqijJtOqVmDM-07ZudvdI.ICi-31dYPH3KpShGSAiRhHrRp7IKV0L8qbKiCH4MeVo\&amp;dib_tag=se\&amp;keywords=oxford+first+dictionary\&amp;qid=1784913360\&amp;sprefix=oxford+first+dictionnary%2Caps%2C160\&amp;sr=8-4" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="primary thesaurus  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06483.JPG" alt="Primary Thesaurus" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06483.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06484.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06572.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Primary Thesaurus</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Collins-Primary-Thesaurus-Learn-Dictionaries/dp/0008222053?crid=23KA32ZAOI617\&amp;dib=eyJ2IjoiMSJ9.YeeHVszLbl08OOuXTDXCU2LXdw0u20h1poYEJqj02jQgNX6uVEJuq7TPbmthEV5024mrppXqpg_-0-Dmafr2yQghxW0ektS7UVx0APuimxK8E3qyW6Ah7AaxkHo4Fn3TR46Zol3mimbaaWy75jO452MHjGaCqzNmTFbNb-fFqUoO47mGPiaoM8Um3QHZF6t5ZxjHXysuDNTfHCwYXVXKMVyoV2ZVFO8JxM1v0Y3bFrs.xR0ppN2hodz748ns1SztokBV9LkCXAVHg21vtLldbto\&amp;dib_tag=se\&amp;keywords=primary+thesaurus\&amp;qid=1784913437\&amp;sprefix=primary+thesauru%2Caps%2C150\&amp;sr=8-4" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="chess tactics for kids  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06485.JPG" alt="Chess tactics for kids" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06485.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06486.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06571.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Chess tactics for kids</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Chess-Tactics-Kids/dp/191565050X?crid=52FTACETQ6E5\&amp;dib=eyJ2IjoiMSJ9.rWlTvSPlDg-Z598paSsc1JegXaU2ruaWjsP9-QFwAUoktYb1248J6wh4AR1dCoiRk7ktPh0Md8V4lYDMBL3JWKsG6tn9cUOLn90mawhqU2JdW9zlRzKZ1piVBN91c83s6T6thWg-vNn0nuGtX-jjXsfcVve0WBiXQn-FBdVls5kPaAZwMqzLGsr1oBsezgKvGKD09ZScbrWXxujzaCLBxKNBuOu8Ld_SLjqaw2UfEkk.qhfiI0jv8brsfvt5CPEUgQWFwT-P9CgUBOP5W1gk0tg\&amp;dib_tag=se\&amp;keywords=chess+tactics+for+kids\&amp;qid=1784913486\&amp;sprefix=chess+tactics+for+kid%2Caps%2C147\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="the gruffalo  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06547.JPG" alt="The gruffalo" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06547.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06548.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>The gruffalo</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Gruffalo-classic-adventure-must-read-favourite/dp/1509830391?crid=9A4L8M39VFYX\&amp;dib=eyJ2IjoiMSJ9.AIVPWC_WAYw5fBVn4hrDuNdcJYn-yC1XSCpsnifUytsTM6I2NO7Gz-2b3M7QmuQNDPYWf-yiWRNEnchflYS4tFkLQ0NUk0BATRRLJLVRgAPs1WvXITa-vdEGjiXxB5NnQtXPqGAnKRsaS_gn28uPafArgo9VbfMdBijiV3tkB33pokieYanIxRWEei3yB9--mElTPyySPt2sp12SdbjaXTkrl6FnRUWBaDK7uV9G_k8.o11zd4736lTR1GJQ86PODUH7OhgY34a5dzcm1tYB2CU\&amp;dib_tag=se\&amp;keywords=the+gruffalo\&amp;qid=1784916315\&amp;sprefix=the+gruffalo%2Caps%2C184\&amp;sr=8-4" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="the paper dolls  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06549.JPG" alt="The paper dolls" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06549.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06550.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>The paper dolls</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Paper-Dolls-Julia-Donaldson/dp/1447220145?crid=2ZG8WO7NM9ZW8\&amp;dib=eyJ2IjoiMSJ9.W9NIbhBf2S7or9DkYqfhNqQQEK71I6Cr9EMZLYZHgT7fKEPcJ1aWxDY9eg6w31SxF-mZigSHJNaKUl2bNHBegYmRjbaKO0JZXp2ekAWeamlDxPHBLlEv3tLV2UsSyIFqNlFEwG2m1w75ef4EIVzeXntqblrpPoCZDLaOvWgEx_WDNNT1aEaeghZNIXVQ6uZdlN0pQbcJrwE07KSOjbTfTqJRW7WROXH2vXEBjA-7FSg.mZ2cU2XomZVX09N3RTuAqnzl-T8YDlLhLQuC3UzSPwQ\&amp;dib_tag=se\&amp;keywords=the+paper+dolls\&amp;qid=1784916332\&amp;sprefix=the+gruffalo%2Caps%2C209\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="the gruffalo&#x27;s child  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06551.JPG" alt="The gruffalo&#x27;s child" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06551.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06552.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>The gruffalo&#x27;s child</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Gruffalos-Child-Julia-Donaldson/dp/1509804765?dib=eyJ2IjoiMSJ9.WOWNvo2hoM6B5y6TyTu-mohDzeeNNT1paBIRZaiYVjBKLT37yD1ahn-paR5QleB-VzRPl1eK9UCSk9rdn1iKWuMEH09P4aPEUnd4rLUutEETSLi2ShpgpjsWKyOO_MTFUJdde6gC1nzZ1TxRkpJIFEh8O79qvjCwqsRdJ7tnufD9NRTmvBoz0xbpl2CGP9A6ayfBUkCNsx0VScErB4oBVeOwZVFKJoPSTw0Jb-Xd55k.IigHaTWmHBqTMFYY4fDTXdQSgj1PW3lNbXQEhDoXGpo\&amp;dib_tag=se\&amp;keywords=The+gruffalo%27s+child\&amp;qid=1784916348\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="stick man  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06553.JPG" alt="Stick man" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06553.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06554.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Stick man</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Stick-Man-Julia-Donaldson/dp/1407170716?dib=eyJ2IjoiMSJ9.THu_BJz_y_auAsKmcn2MPNPwEcxgsQsicXBK3jEc8Of-ccJgO6XcuJFVRIxqn3qmLxfV7XL4tumkw_qqwuygsZ49LnyCBCdhdxM1wn_Rfi_WsXkvCOBpMucWTLrHYjmWEWqKtyH9YYBaO6VLh02wcFbzD3R56wt5gXWpqBOWDJy-CIfoIBf8AbpdiFvWnE9dDfu_iZLOIl7LJ_hxKTX7pwQ11XVjxDVUl_6qGmwkdGw.3HxWyWPlf_8neeU4hA5Ht0y19ata47cLk3pLGk0sOk0\&amp;dib_tag=se\&amp;keywords=Stick+man\&amp;qid=1784916368\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="the everywhere bear  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06555.JPG" alt="The everywhere bear" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06555.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06556.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>The everywhere bear</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Everywhere-Bear-Julia-Donaldson/dp/1447280741?crid=2CJW71RSYE0KW\&amp;dib=eyJ2IjoiMSJ9.3dKgM8E4gPG02DxSgUVrEBC3vkwBa6SBp8KvjexazkV2TPu1_Tr09vLun5u8dRopxnVaezLF6UCj-IqT2XKVyS3U2vYmgWcEe85sVY-_x6Ssl28nIQWtJFzetrFAxrOsYTx6JFo98k0PIMkIIJFHNAtzdJ8Chpy2A4yW_GqEtoRZ4qu2C_GJoYeW_5Vm39AnI1aR-hP5ys8q40djn06Gbeucg5UVT7SbVxSKM9SgFGA.iaNYShk6PE_7ZC-ACZTVg0d9uAikrX9-mcocH4NyIUk\&amp;dib_tag=se\&amp;keywords=The+everywhere+bear\&amp;qid=1784916382\&amp;sprefix=stick+man%2Caps%2C284\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="monkey puzzle  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06557.JPG" alt="Monkey puzzle" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06557.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06558.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Monkey puzzle</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Monkey-Puzzle-Julia-Donaldson/dp/1509812490?crid=1ZSNJ2KIG8XK2\&amp;dib=eyJ2IjoiMSJ9.khz4pCO6DLWc5zL5nhPyvYF6KR0h08PNb-WLqKt0VsORJSX7BemN9fc58vzXekkjDhtsBAKt90M8Zd2_W8P8ypXJuck_7aZXf9zNi_bzxoaIbufUjJnpCVPfAx6Os8iNGloWhOl9Qa6hYr1LyaCyzLCcgyH65Rkjvovj2j-ll4m5lOxoMtP5YsyRS5YPQpEny-72qk8HfCKftDpV8vhFVhzwiZVIofgWHwQZsm6xos4.gyH7ywBdoUJTFiXR7SiJIC2x8rtVSSmWSxqE_dKK9MQ\&amp;dib_tag=se\&amp;keywords=monkey+puzzle\&amp;qid=1784912092\&amp;sprefix=monkey+puzzle%2Caps%2C179\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="zog  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06559.JPG" alt="Zog" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06559.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06560.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Zog</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Zog-Julia-Donaldson/dp/1407170767?dib=eyJ2IjoiMSJ9.0kxXl6re-2x7oM9BtwG4RQ-HW-ZPZ_7fIdvEdpkgWTVq3xxEYm1KRWOhlNKDPrHPA6Tw7XbzTINGiB3X6DUgvIq_JZsIn9AaVGvf9RfCtWf-cKGqwNECjBrPHIXivIIN_lKEXPKceaoy_OxlHoosZwimwAhfkQDR4RrjdGly2Pe9XWvzhMwtC-cJwZU_fPaX4uugACpNGyIZ4D38TS0vCQmlvOTnuA2Wrd9_QqdV3sQ.Sxi3K6vzXhxPLGdwffXPdEgZNgJiNLByhfRnuqCQuhg\&amp;dib_tag=se\&amp;keywords=zog\&amp;qid=1784916391\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="zog and the flying doctors  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06561.JPG" alt="Zog and the flying doctors" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06561.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06562.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Zog and the flying doctors</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Zog-Flying-Doctors-Julia-Donaldson/dp/1407173502?crid=29Q22D61FBGI8\&amp;dib=eyJ2IjoiMSJ9.pXpSeKK4x_ZyUKWOaP8L7oTG2ngNlO13KtF4Ue48s3kpKsnuW68I9IaUi0k-7qU2lPkFrJH3OvvpFQ5cDBctT7Bf0BZloqRAD9p2W6RLHqJx1Wc63xy8TU66f0KBrVH7zzfeWUy86Y5F5WVsyjfz3fjE20eNxA1LS6EqTAsyBGJLojQy4gFcalND7GKvDGx03nHUAHGiFEu0QHiDSeD2HX6nzF_KiTGwbR8s7ja0HIE.VZF6n3kEI-bJc0PzO8ZnhEk7AFv_qvxgoUQWSHlUgyQ\&amp;dib_tag=se\&amp;keywords=zog+and+the+flying+doctors\&amp;qid=1784916413\&amp;sprefix=zog+and+the+fly%2Caps%2C1510\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="room on the broom  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06563.JPG" alt="Room on the broom" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06563.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06564.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Room on the broom</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Room-Broom-Julia-Donaldson/dp/1509804773?dib=eyJ2IjoiMSJ9.12j6_-kGLZ2vPsFuz1SE_EhbIHu7ao1A-twrpcGhecHKDQJwfY460SXbPj2UbGLK7jLsii0Q7epDhKUTGmHvvs8U9DCqABNzW6RqsRfwQbFhROu7GM8pmZiQXRMyYsJWmV4kcN-AHDfq6d70hTRiZGrPCp-yk13FjToN71QsKlqpSHyc1Ve3gjMDHMI0GMI4ehEJXMrgm9Y337F0ucILhp-RYT9W50I3kJZTwo9YKeI.2WChb--NBYLNPjuQcnpN-eZOpcOWzNxOKkTPn5qeOOk\&amp;dib_tag=se\&amp;keywords=room+on+the+broom\&amp;qid=1784916439\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="the snail and the whale  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06565.JPG" alt="The snail and the whale" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06565.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06566.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>The snail and the whale</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Snail-Whale-Julia-Donaldson/dp/1509830448?crid=1XE2LV9AZT1K6\&amp;dib=eyJ2IjoiMSJ9.Hzj3Qkoli6SI6MRWoF-S1YhYH4KlH0i6me8SX36JODkKj7xSSGgvaMTmthPWG5gH_g47PErCUvAIjqX7au3wet43stPZpqY1yVuHE10h7_JEkr9TlCd8T3poybfSJKYfjN5jmV0zEchTkEGw1BJlAWgLpORU8A3_wCtw8vGt8EeSz6b43GhqVeitVhTmwGN4iZTV4sZ4Hu4O1QSRkk5DdVYCdg2An5vGeyaKcGGksHc.iBOfAA5haUKfT2QPHgbSvCbbqttBXbagEx-vurtnfU0\&amp;dib_tag=se\&amp;keywords=The+snail+and+the+whale\&amp;qid=1784916518\&amp;sprefix=the+snail+and+the+whale%2Caps%2C474\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="illustrated dictionnary of maths  excellent" data-price="40">
+    <div class="photo">
+        <img class="main" src="DSC06448.JPG" alt="Illustrated dictionnary of maths" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06448.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Illustrated dictionnary of maths</h2>
+        <div class="price">40 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Illustrated-Dictionary-Maths-Usborne-Dictionaries/dp/1409546969?crid=1MEBHZI0IM1CT\&amp;dib=eyJ2IjoiMSJ9.tdTkt2afytUDTY3kBqZz6x1HNth-oGRtv6iaw2QROi7aX4pBRC6sa81W0NpwGEgIs0S9Hcn7VNk8H7rENTfQmmfZJssCyAJhdjOYagkYy2NVNzSy2ErVs-cX9sx8VWjWUY6FgOlZ0qJskGuFbMiXRyhdTwauSxPFdRcFjZO6RtuRBBOCHxNePQWg3zN_R-07faAu6gG5EK0kS1g9gJImf-1LNuUlVfNa-8aEErzjZ1E.UawQCt5d7o1r6Os3CFKX9x7Fdv60mW2gxTKP5VEBryU\&amp;dib_tag=se\&amp;keywords=illustrated+dictionary+maths\&amp;qid=1784815625\&amp;sprefix=illustrated+dictionnary+maths%2Caps%2C134\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="ella on the outside  very good" data-price="40">
+    <div class="photo">
+        <img class="main" src="DSC06616.JPG" alt="Ella on the outside" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06616.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06617.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Ella on the outside</h2>
+        <div class="price">40 DHS</div>
+        <span class="badge very-good">Very good</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Ella-Outside-Cath-Howe/dp/1788000331?crid=9QZVS6UJ1MFG\&amp;dib=eyJ2IjoiMSJ9._Zt8P9H73GxpZQHJpCPYPnMHuWmM_UuxfWZimcTkT4fmiotnzKMECFp2p6BuYhD8.oLC0lH5LjQ6yJmpSVB2XYM9pHn8KKnogeGWd-k8ZAAk\&amp;dib_tag=se\&amp;keywords=ella+on+the+outside\&amp;qid=1784991825\&amp;sprefix=ella+on+the+outsid%2Caps%2C264\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="greta thunberg  excellent" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06445.JPG" alt="Greta Thunberg" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06445.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Greta Thunberg</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Extraordinary-Life-Greta-Thunberg-Lives/dp/024144389X?crid=1IX0V5W7MD43O\&amp;dib=eyJ2IjoiMSJ9.MmlwLLzz5kaPfAFBJqUo3NR0r1PrjypyltC9OeC6CUGf_eVNd0q3OLjg5s8Y81uo.LyYDN_KQzUMZ-CXgEXtPX2b--Az0-_GbwjUlPBKyG_8\&amp;dib_tag=se\&amp;keywords=greta+thunberg+usborne\&amp;qid=1784816759\&amp;sprefix=greta+thunberg+usborn%2Caps%2C198\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="serena williams  excellent" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06446.JPG" alt="Serena Williams" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06446.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Serena Williams</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/gp/product/0241433932?ref_=dbs_m_mng_rwt_calw_tpbk_12\&amp;storeType=ebooks\&amp;qid=1784816759\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="alan turing  excellent" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06447.JPG" alt="Alan Turing" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06447.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Alan Turing</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/gp/product/0241434017?ref_=dbs_m_mng_rwt_calw_tpbk_11\&amp;storeType=ebooks\&amp;qid=1784816759\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="cinderella  old" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06471.JPG" alt="Cinderella" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06471.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06472.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06473.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Cinderella</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge old">Old</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="princess esme  old" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06474.JPG" alt="Princess Esme" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06474.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06475.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Princess Esme</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge old">Old</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="oxford mathematics dictionnary  old" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06449.JPG" alt="Oxford mathematics dictionnary" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06449.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Oxford mathematics dictionnary</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge old">Old</span>
+        
+        <a class="btn" href="https://www.amazon.co.uk/Oxford-Study-Mathematics-Dictionary-2008/dp/0199116881?crid=1TXA4LI5LFQQI\&amp;dib=eyJ2IjoiMSJ9.d9jQu_n9838ykBSfR7CQUvDoPBLQkSo3JfEIM2vMM82Ii-hmAAKc45U2g-lBRXQN98sCBvTTup6cOL3rKu0KymtxDzkDy4L76PUMIFPYot5fR7FIIDtj91zSwn6ApVzlyiCZxpZvzP2uqoRoVIntgAPzZlZtM8Rdi8wk0p6J73c01xqY_7dzDPwiwkybghjs2z_01Vixt4EV6lf1oQqxOqRzcV-pKvKsoxSHh8yuu9M.j1aD82aF8nUAAD3DOp8yI24AySBb5YTJLiPMCltw634\&amp;dib_tag=se\&amp;keywords=oxford+mathematiques+dictionnaire\&amp;qid=1784815746\&amp;sprefix=oxford+mathematiques+dictionnaire%2Caps%2C158\&amp;sr=8-10" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+</main>
+<div id="lightbox" onclick="closeImage()">
+    <span id="close">&times;</span>
+    <img id="lightboxImage" src="" alt="">
+</div>
+<script>
+function swapImage(thumbnail) {
+    const card = thumbnail.closest(".card");
+    card.querySelector(".main").src = thumbnail.src;
+}
+function openImage(src) {
+    document.getElementById("lightboxImage").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeImage();
+});
+const search = document.getElementById("search");
+const sort = document.getElementById("sort");
+const grid = document.getElementById("grid");
+if (grid) {
+    const cards = [...grid.children];
+    function updateBooks() {
+        const query = search.value.toLowerCase();
+        cards.forEach(card => {
+            card.style.display = card.dataset.title.includes(query) ? "" : "none";
+        });
+        cards.sort((a, b) => {
+            if (sort.value === "title") return a.dataset.title.localeCompare(b.dataset.title);
+            if (sort.value === "asc") return Number(a.dataset.price) - Number(b.dataset.price);
+            return Number(b.dataset.price) - Number(a.dataset.price);
+        });
+        cards.forEach(card => grid.appendChild(card));
+    }
+    search.addEventListener("input", updateBooks);
+    sort.addEventListener("change", updateBooks);
+    updateBooks();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livres en français pour enfants - Second-hand Books</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f5;
+    color: #24323d;
+}
+header {
+    background: #234f70;
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+header h1 { margin: 0 0 8px; font-size: 32px; }
+header p { margin: 0; opacity: .9; }
+nav {
+    background: white;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+}
+nav a {
+    color: #234f70;
+    text-decoration: none;
+    padding: 7px 11px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+nav a:hover { background: #e8f0f5; }
+.controls {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+input, select {
+    padding: 11px 13px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+}
+.photo { padding: 15px 15px 0; }
+.main {
+    width: 100%;
+    height: 470px;
+    object-fit: contain;
+    background: #fafafa;
+    cursor: pointer;
+}
+.thumbs {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 10px 0 3px;
+}
+.thumb {
+    height: 82px;
+    width: 82px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+.thumb:hover { border-color: #234f70; }
+.info { padding: 16px 18px 20px; }
+.info h2 { margin: 0 0 10px; font-size: 22px; }
+.price {
+    color: #c62828;
+    font-size: 34px;
+    font-weight: bold;
+    margin: 5px 0 9px;
+}
+.badge {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.badge.excellent { background: #2e7d32; }
+.badge.very-good { background: #1565c0; }
+.badge.good { background: #ef6c00; }
+.badge.bon { background: #ef6c00; }
+.badge.très-bon { background: #1565c0; }
+.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.neuf { background: #00897b; }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #234f70;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.btn:hover { background: #17384f; }
+.home {
+    display: inline-block;
+    margin: 18px 20px 0;
+    color: #234f70;
+    text-decoration: none;
+    font-weight: bold;
+}
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.88);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+#close {
+    position: fixed;
+    top: 15px;
+    right: 22px;
+    color: white;
+    font-size: 38px;
+    cursor: pointer;
+}
+.category-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.category {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    color: #24323d;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+    transition: transform .15s;
+}
+.category:hover { transform: translateY(-3px); }
+.category h2 { margin: 0 0 10px; color: #234f70; }
+.category p { margin: 0; }
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; padding: 12px; }
+    .main { height: 390px; }
+    header h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Livres en français pour enfants</h1>
+    <p>45 références</p>
+</header>
+<nav>
+<a href="index.html">Home</a>
+<a href="langue.html">Langue</a>
+<a href="maths.html">Maths</a>
+<a href="cuisine.html">Cuisine</a>
+<a href="reconversion.html">Reconversion ?</a>
+<a href="informatique.html">Informatique</a>
+<a href="enfants-francais.html" style="font-weight:bold;background:#e8f0f5;">Livres en français pour enfants</a>
+<a href="livres-francais.html">Livres en français</a>
+<a href="enfants-anglais.html">English books for children</a>
+<a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+</nav>
+<div class="controls">
+    <input id="search" type="search" placeholder="Search...">
+    <select id="sort">
+        <option value="desc">Price high → low</option>
+        <option value="asc">Price low → high</option>
+        <option value="title">Title A → Z</option>
+    </select>
+</div>
+<main class="grid" id="grid">
+<article class="card" data-title="astérix - 14 albums 70 chacun excellent" data-price="800">
+    <div class="photo">
+        <img class="main" src="DSC06461.JPG" alt="Astérix - 14 albums" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06461.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Astérix - 14 albums</h2>
+        <div class="price">800 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>70 chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="tom-tom et nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33 60 chacun - 500 tous excellent" data-price="500">
+    <div class="photo">
+        <img class="main" src="DSC06437.JPG" alt="Tom-Tom et Nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06437.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Tom-Tom et Nana - tomes 1,2,3,4,5,6,7,9,10,30,31,32,33</h2>
+        <div class="price">500 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>60 chacun - 500 tous</p>
+        <a class="btn" href="https://www.amazon.fr/Tom-Tom-Nana-01-limpossible/dp/2747076342?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=236RMOUFF7XWY\&amp;dib=eyJ2IjoiMSJ9.cGzHxq0mbasr6s77gOgEhgkSClcxQteIbL-yHgEmO-FD7kXPgxM3asgPJd5Fh1KoGLGTVxvd4mFC8Vfls54zjiPLE0gxgcE0oaRQU7cQ76BTfDj0RkwbKTsTxCQMI3nimJJkRM6-5hiOoTq3KkT7CvVBAMMDcIowf5bBs9DndwpFZDjhPL-sSSlF63fvhKrGL-JW1UoHD0qmehbO-s58KslE7l6Bl4DZJt0TVY_Hd2VBKocii9r0lOjEftZQ3MecIkDAyRzYzImia-s9qeWTumzUqLCsjmYJzET_PqPKxxU.Gm0QN07-bpCkwjx3-8WCmZUtCFq0oEE2mz3Q4Zdn35o\&amp;dib_tag=se\&amp;keywords=tomtom+et+nana\&amp;qid=1784912415\&amp;sprefix=tomtom+et+nan%2Caps%2C251\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="tintin - 6 albums 70 chacun excellent" data-price="350">
+    <div class="photo">
+        <img class="main" src="DSC06458.JPG" alt="Tintin - 6 albums" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06458.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Tintin - 6 albums</h2>
+        <div class="price">350 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>70 chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="ariol - tomes 1,2,8,12,16 60 chacun - 250 tous excellent" data-price="250">
+    <div class="photo">
+        <img class="main" src="DSC06438.JPG" alt="Ariol - tomes 1,2,8,12,16" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06438.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Ariol - tomes 1,2,8,12,16</h2>
+        <div class="price">250 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>60 chacun - 250 tous</p>
+        <a class="btn" href="https://www.amazon.fr/Ariol-01-petit-comme-vous/dp/2747037800?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=LOMDTZTBLORH\&amp;dib=eyJ2IjoiMSJ9.62z7JdFiS5qtqee8VYII-4Wrm2OIIdvqtVnTSvQ62CLS4l2otLqrAkEE0NZMBoQVkQjaZUNTJRVUhe78afwozdDkI_CaTR6R60X4FslCrTkTnx348ziJGO7TClyuMbUWjIS-wuGBiSDpe1vQZfk3-mfkpVRYmkKZPfV9cAyj6s_ZUFdDLr9Hni9mfTdhvYUdTTABrp8RDgpxDYt3tkYm7LluZ5XFyTlr2OcTLtdvU4b85hV4rYt1vRgpW4AGCV33usADyCCrXh2W4BeCwykIc898ybSP5blZV6SIa4ceU20.53qUau-QqxmK3iggw4p82bWdkbRxhITvFXXJmbdFf5A\&amp;dib_tag=se\&amp;keywords=ariol\&amp;qid=1784912426\&amp;sprefix=ario%2Caps%2C255\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="imageries - 15 livres 20 dhs chacun excellent" data-price="250">
+    <div class="photo">
+        <img class="main" src="DSC06728.JPG" alt="Imageries - 15 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06728.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Imageries - 15 livres</h2>
+        <div class="price">250 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>20 DHS chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="marion duval - 3x3 histoires 80 chacun bon" data-price="200">
+    <div class="photo">
+        <img class="main" src="DSC06439.JPG" alt="Marion Duval - 3x3 histoires" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06439.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Marion Duval - 3x3 histoires</h2>
+        <div class="price">200 DHS</div>
+        <span class="badge bon">Bon</span>
+        <p>80 chacun</p>
+        <a class="btn" href="https://www.amazon.fr/Marion-Duval-int%C3%A9grale-02-Int%C3%A9grale/dp/B09GQGLDZX?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3VRN1ONY9RAM7\&amp;dib=eyJ2IjoiMSJ9.saa5ejIknlAb89Lp-27CwHxq96yzUgtGwxjcCYcq6PKbpv14caNrgFPk0jwKMYWfmhPCNZr-H-p3V7F9KBVtqqBYXvbkqAYN1H3xVNCP0jKG71k4Jedgvzob_ojwvkyDBmCBI_UdjmZ8eqAjBOph2PTzTIVT26D8l38hM2fK0-ZU1k_kkFs0SnkFAQHGYh1ijoRaWoOZUzwFtCvT64fmWfOmxVGDoSGnXaKo2Qeh1PSj_T8E3t5zYf3cULfEnPD40yH_0RQ2Kxp6uY76rtfDChEQcuE_UlrAspPr8hrXmGg.mi1FXbtxI9g7r38oicqY1PohG0K7hhI2NMzseWjrn9o\&amp;dib_tag=se\&amp;keywords=marion+duval\&amp;qid=1784912352\&amp;sprefix=marion+duval%2Caps%2C248\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="mortelle adèle - tomes 6,15,16,17 60 chacun excellent" data-price="200">
+    <div class="photo">
+        <img class="main" src="DSC06440.JPG" alt="Mortelle Adèle - tomes 6,15,16,17" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06440.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Mortelle Adèle - tomes 6,15,16,17</h2>
+        <div class="price">200 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>60 chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="boule et bill - 3 albums 70 chacun excellent" data-price="200">
+    <div class="photo">
+        <img class="main" src="DSC06463.JPG" alt="Boule et bill - 3 albums" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06463.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Boule et bill - 3 albums</h2>
+        <div class="price">200 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>70 chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="lola - 6 livres 40 chacun - couverture cartonnée excellent" data-price="200">
+    <div class="photo">
+        <img class="main" src="DSC06511.JPG" alt="Lola - 6 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06511.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Lola - 6 livres</h2>
+        <div class="price">200 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>40 chacun - couverture cartonnée</p>
+        
+    </div>
+</article>
+<article class="card" data-title="je commence à lire - 17 livres 10 dhs chacun excellent" data-price="120">
+    <div class="photo">
+        <img class="main" src="DSC06576.JPG" alt="Je commence à lire - 17 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06576.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06577.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06579.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Je commence à lire - 17 livres</h2>
+        <div class="price">120 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>10 DHS chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="j&#x27;apprends à lire avec sami et julie - 11 livres 15 dhs chacun excellent" data-price="120">
+    <div class="photo">
+        <img class="main" src="DSC06580.JPG" alt="J&#x27;apprends à lire avec Sami et Julie - 11 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06580.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06581.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06582.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>J&#x27;apprends à lire avec Sami et Julie - 11 livres</h2>
+        <div class="price">120 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>15 DHS chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="pourquoi ? quand ? comment ?  excellent" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06464.JPG" alt="Pourquoi ? Quand ? Comment ?" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06464.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Pourquoi ? Quand ? Comment ?</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/POURQUOI-QUAND-COMMENT-Atelier-Cloro/dp/235990955X?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=21UC1KDTDV7NC\&amp;dib=eyJ2IjoiMSJ9.lmcHYJHoodOq36b1LJLwIAjZxcFSqwXWkayiXmwinL60pUPcAR9JMpTDg-6f0Io056gOZyPxpcVOe5_eGAweNRrxaFc-sExlC2kxae5M1m-UTJCfD4UYsFAO1yEAzle8or7LeVBP2ey3NnHNwaNe11ownamGvxEQTX2eKc1T5hZVXtqYRB9EEc2Lfh5f3wNU1eY3Ud5QlygB8Sawn6RGr49_D_CEck1Ij8se2BHL8t4FoP_eINqr8W__pXU7hsF2ycjDFadf286tkZZ00XEqIfLcPTXpSG-VuzrDS5NI94U.N0ky6S4HNmkEMkH6yt2np3Hv3QuxCrbvSJZ8ynq7zZg\&amp;dib_tag=se\&amp;keywords=pourquoi+quand+comment\&amp;qid=1784912818\&amp;sprefix=pourquoi+quand+commen%2Caps%2C228\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="histoires du soir pour filles rebelles  excellent" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06470.JPG" alt="Histoires du soir pour filles rebelles" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06470.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06545.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06546.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Histoires du soir pour filles rebelles</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="dis-moi - la nature  excellent" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06583.JPG" alt="Dis-moi - la nature" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06583.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06584.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06585.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Dis-moi - la nature</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Dis-moi-Comment-prot%C3%A9ger-nature-Mullenheim/dp/2036009352?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=33F8JE13MPLPW\&amp;dib=eyJ2IjoiMSJ9.eWkfiYXZSC4F5zIsmUzGqoxxRWvtm6bB70ZNPF64yy_c-EMeVrvHy304kjrlrvh24hCWXubYllGbUM9EXMrcVb8QKDIJhmaUfC6q7PFk5Ru36B39SjgzdEY8fUiMCiOcnlXEiuDW12si9Z1N-gJCwbGS10Mgvj05GE6coix2pCe1X1zsYOHJ4TLekjjoKEqfrEECOmsn7GUeCQv1J83PgO2_ADj8QkVKtChXMCukVL05Lk-VwwBjwQ6shSkZ_megBpCdLIUFq0vyRFyZ4BosH_YvwbTDxKJaPFpouNyBt5M.obEQU2lyfzCmLRcbMNrYy5rbGbAtkFLpAelSKWUerkY\&amp;dib_tag=se\&amp;keywords=dis+moi+la+nature\&amp;qid=1784976843\&amp;sprefix=dis+moi+la+natur%2Caps%2C188\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="cédric - temps de chien  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06457.JPG" alt="Cédric - Temps de chien" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06457.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Cédric - Temps de chien</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="comment devenir un élève modèle  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06487.JPG" alt="Comment devenir un élève modèle" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06487.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Comment devenir un élève modèle</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Comment-devenir-mod%C3%A8le-le%C3%A7ons-fatiguer/dp/221131550X?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3FQE0OEB5UTKP\&amp;dib=eyJ2IjoiMSJ9.mjBACov51wRyflpkcvL5Kw.PQ2eYIP1RxgHXw3vWyoespN7qls-gDIujOWHOr5q1Lk\&amp;dib_tag=se\&amp;keywords=comment+devenir+un+%C3%A9l%C3%A8ve+mod%C3%A8le\&amp;qid=1784913555\&amp;sprefix=comment+devenir+un+%C3%A9l%C3%A8ve+mod%C3%A8l%2Caps%2C231\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="chien pourri aux jeux olympiques  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06488.JPG" alt="Chien pourri aux jeux olympiques" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06488.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Chien pourri aux jeux olympiques</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Chien-Pourri-olympiques-grand-format/dp/2211338186?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=27O62FXUWOI8Z\&amp;dib=eyJ2IjoiMSJ9.HVZcv5AUaDIv3iKurHwe4CkRkxVinfHgividz7ujYg94HVtnf41osbNPiHbJT4vXqcQvABTXLaLYIiumAq0emR71YuZwBlyu_-cMtOIvgAuTdjFPbaa9JK7L7S0TdeqkyvaDzm_bqYGl3HOOdkTLQtR_nwETKxliizSsOYZtqzcwvd1Hwg9gwrw9jA4H366K4wFtnpT0ayOX524n9fi5K3DDqce1KxzTudMi8un-0oXQBkvncc5_uaPWSwfxc5_T10XihAI5kiMvM0I6B7TipVbe4WiKP6d6NE1bzUa0YPI.UrkR25IF6TWNstpXag2Fjo621wtFBkyUyxcUkxElEkw\&amp;dib_tag=se\&amp;keywords=chien+pourri+aux+jeux\&amp;qid=1784913612\&amp;sprefix=chien+pourri+aux+jeu%2Caps%2C232\&amp;sr=8-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="mémoires de la forêt  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06489.JPG" alt="Mémoires de la forêt" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06489.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Mémoires de la forêt</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/M%C3%A9moires-for%C3%AAt-Souvenirs-Ferdinand-Taupe/dp/2211313159?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=HWG6Z95LZSVV\&amp;dib=eyJ2IjoiMSJ9.oODNr6xI_Ur50fFKkW5TUY-lUDPNtLp5yl1wYCX0IUwbG_geEtvbAGfDpQlsGe0FCmHJk66c38Ml-M9LLhWpKZKu9oewLz2jV0D3n9cyf5KsaGmWOhQ0v_ZZ6hGVnJmoJLUZasEykcXHU6rtUItThKnnRtzh1nrDu51pEjGCP67_VJ11_SLKdAV737T6yP8FHGenT2plChKo7lAliSKXqWn9cfrvx2yp8vTmdKPztO0IlzwFopcuYkDuzqq-cPyzgoCCgHxgV4hsw1eAavdPMMdaxRAsO-aZVGVJCeMLoIk.sXFSsmzJB8ebWgwTBYIgyyx_Wonm0Zv4NxIycq8My2g\&amp;dib_tag=se\&amp;keywords=M%C3%A9moires+de+la+for%C3%AAt\&amp;qid=1784913664\&amp;sprefix=m%C3%A9moires+de+la+for%C3%AAt%2Caps%2C207\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="béatrice l&#x27;intrépide  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06490.JPG" alt="Béatrice l&#x27;intrépide" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06490.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Béatrice l&#x27;intrépide</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/B%C3%A9atrice-lintr%C3%A9pide-d%C3%A9licieux-Fran%C3%A7ois-Bleus/dp/2211233546?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=1ZQVWJ84GEJW2\&amp;dib=eyJ2IjoiMSJ9.9K-jGKUFtb0nn_i3KcYEf6ERAdApEM3KDdp5xeZtiPsVbs6hnG01YJ9ZadzE2RxpSuCkt7WNsMXzFvMkeSieIg.Oc64u7lIqnBCoaPBC3oP22RIlgzFaNKZvlUGx2N1b-g\&amp;dib_tag=se\&amp;keywords=b%C3%A9atrice+l%27intr%C3%A9pide\&amp;qid=1784913696\&amp;sprefix=b%C3%A9atrice+l%27%2Caps%2C333\&amp;sr=8-5" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="oscar et carrosse - 3 histoires  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06491.JPG" alt="Oscar et Carrosse - 3 histoires" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06491.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Oscar et Carrosse - 3 histoires</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Oscar-Carrosse-soupe-Ir%C3%A8ne-Bonacina/dp/2211305857?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3JEKFR6COBRR8\&amp;dib=eyJ2IjoiMSJ9.CcDvu-lLqhqvFfZDq_U3G3cFNwMYKi1u7P297RMFnPFBpjsOhiPB5iAVQ_cb9dgjIpQKmZaV3sIwCESPWB4H-kVJSodSzu-SU3NUpMJN2tJFXVvv6GDCu8CFz_0SNNkhh_-T4_9QabkDYAmPOnROHA.vj8AG5p8LN9pcmmND6lPhdxRyi8i5rYelHAMOY1BN4I\&amp;dib_tag=se\&amp;keywords=Oscar+et+Carrosse\&amp;qid=1784913831\&amp;sprefix=oscar+et+carrosse%2Caps%2C272\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="frankie quel cinéma !  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06493.JPG" alt="Frankie Quel cinéma !" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06493.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Frankie Quel cinéma !</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Frankie-Quel-cin%C3%A9ma-Marie-Chartres/dp/2211318010?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=MYXJRTLRAVOT\&amp;dib=eyJ2IjoiMSJ9.FOGqfBkga2r0EczE3t0-LA.pUluKV4juvuxKEKb3YvGbUkqKwyy6cSD345zGbqF6Zg\&amp;dib_tag=se\&amp;keywords=Frankie+Quel+cin%C3%A9ma+%21\&amp;qid=1784913893\&amp;sprefix=frankie+quel+cin%C3%A9ma+%2Caps%2C237\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="pitsi - mitsi  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06494.JPG" alt="Pitsi - Mitsi" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06494.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Pitsi - Mitsi</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Pitsi-Mitsi-Du-temps-animaux-parlaient/dp/2211312799?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=2IHOWP1YDH3SX\&amp;dib=eyJ2IjoiMSJ9.ncetedewnjHPkCqMiXpZOg.8st1tv3diCBqZDdx3lU07KoP7PKTwlS1mJ3TTn5WuNY\&amp;dib_tag=se\&amp;keywords=Pitsi+-+Mitsi\&amp;qid=1784913905\&amp;sprefix=pitsi+-+mitsi%2Caps%2C282\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="bibliobus - corps et santé  bon" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06501.JPG" alt="Bibliobus - Corps et santé" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06501.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Bibliobus - Corps et santé</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Bibliobus-n%C2%B0-19-CE1-Cycle/dp/2011173426?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=37YS3LIKKD2IW\&amp;dib=eyJ2IjoiMSJ9.2EuMbK1ix4wOwmEpsKqEDBYNjY_8LY1cFUUAGgJKG33GjHj071QN20LucGBJIEps.a9xV_a4OnRJ15RX5iYyrXq-TZpiMVmgI-_HRsZm8B6M\&amp;dib_tag=se\&amp;keywords=bibliobus+corps+et+sant%C3%A9\&amp;qid=1784914314\&amp;sprefix=bibliobus+corps+et+sant%2Caps%2C183\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="bibliobus - la perle phosphorescente  bon" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06502.JPG" alt="Bibliobus - La perle phosphorescente" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06502.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Bibliobus - La perle phosphorescente</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Bibliobus-n%C2%B0-CM-phosphorescente-Ed-2005/dp/2011165008?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=35CLFMWHJG0VC\&amp;dib=eyJ2IjoiMSJ9.zdyNEaGjyvJALtrXmU7X3qkEIMKjNVoy-45XVTM1ZNjGjHj071QN20LucGBJIEps.00W0i7X4M2F7zi1PYf6EQclKrsowUSopNBnLhjfxnV8\&amp;dib_tag=se\&amp;keywords=bibliobus+perle+phosphorescente\&amp;qid=1784914328\&amp;sprefix=bibliobus+perle+phosphorescen%2Caps%2C180\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="la longue marche des dindes  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06512.JPG" alt="La longue marche des dindes" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06512.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06513.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>La longue marche des dindes</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/longue-marche-dindes-L%C3%A9onie-Bischoff/dp/2810213658?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=19ASTS1NX9GCF\&amp;dib=eyJ2IjoiMSJ9.gEB_wf8x9Xo32JQBdcpEeg.SSC2BY1MgfpJ7kCDHsY5aoKaGbR3Jc-U-FJP7rNptQc\&amp;dib_tag=se\&amp;keywords=La+longue+marche+des+dindes.\&amp;qid=1784914430\&amp;sprefix=la+longue+marche+des+dindes%2Caps%2C229\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="radio banane  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06514.JPG" alt="Radio banane" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06514.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06515.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Radio banane</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="je veux un chien  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06516.JPG" alt="Je veux un chien" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06516.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06517.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Je veux un chien</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="blaise, isée et le tue-planète  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06518.JPG" alt="Blaise, Isée et le Tue-Planète" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06518.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06519.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Blaise, Isée et le Tue-Planète</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Blaise-Is%C3%A9e-tue-plan%C3%A8te-Claude-Ponti/dp/2211313361?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=1U4GOV31WDEQW\&amp;dib=eyJ2IjoiMSJ9.9YYeYzV8fz9HpIIyn3xz_MFcKRHQG6Q_U-4NFYsmX0Q.fEMUyG7tlk9jV8DLbQ-RlWOBHjmt5UD_CWFQRIJvsr4\&amp;dib_tag=se\&amp;keywords=Blaise%2C+Is%C3%A9e+et+le+Tue-Plan%C3%A8te\&amp;qid=1784914550\&amp;sprefix=blaise%2C+is%C3%A9e+et+le+tue-plan%C3%A8te%2Caps%2C186\&amp;sr=8-1\&amp;ufe=app_do%3Aamzn1.fos.bb6ea7e0-0ef7-4fc8-9adc-4bf1477881dd" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le vol du grizzly  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06520.JPG" alt="Le vol du Grizzly" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06520.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06521.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le vol du Grizzly</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Vol-du-Grizzly-Gregoire-Fabian/dp/2211230733?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=2N5PUTBJJFG7J\&amp;dib=eyJ2IjoiMSJ9.FttCFVuGlLDq6sGV_bRgwQ8eJlLmhE-xp7ecLGEOYGSDW7U8Hfcqd6dg_gUaffLQlHNgfLHwkvbu9tethyhKCR0MHQ683oxivvicCNnglkw49LtQDa8WVJy9813yyuKWI6gCJ46dwqCNBpt7Kb9gebJj2uZqnel6pqUVvFvy_v1z9yTnXkgkkf5P45xRdX1ii5a8YfKS_ccRT9OCrjsyxAfWLHAgrEpkKFDyzTAk8NhhgeftCRuRDkgOTimENi-gdl5kMc9aLIE9y2jCNDq0c3WgPIOFXtPecURFEHcruY8.ncy5z2bX24WfQvLQ_QWpr7GDdPu3bnMI7ZkVuuLfI3E\&amp;dib_tag=se\&amp;keywords=Le+vol+du+Grizzly\&amp;qid=1784914593\&amp;sprefix=le+vol+du+grizzly%2Caps%2C176\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le petit robot de bois et la princesse bûche  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06522.JPG" alt="Le petit robot de bois et la princesse bûche" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06522.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06523.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le petit robot de bois et la princesse bûche</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/petit-robot-bois-princesse-b%C3%BBche/dp/2211335845?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=1LGB35NTZE2D7\&amp;dib=eyJ2IjoiMSJ9.i-A-Ps_6zFO72T7NBLu-opxitKS_GtbFA2w4ar8ZOLr0sDSpdFLEILwMrHXf0s59.MkXiniBC0L5drjKzP6jig_cBFzY1IcFi2QAhdfWNuT0\&amp;dib_tag=se\&amp;keywords=Le+petit+robot+de+bois+et+la+princesse+b%C3%BBche\&amp;qid=1784914634\&amp;sprefix=le+petit+robot+de+bois+et+la+princesse+b%C3%BBche%2Caps%2C173\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="trois ou quatre histoires de mousquetaires  excellent" data-price="60">
+    <div class="photo">
+        <img class="main" src="DSC06524.JPG" alt="Trois ou quatre histoires de mousquetaires" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06524.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06525.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Trois ou quatre histoires de mousquetaires</h2>
+        <div class="price">60 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Trois-ou-quatre-histoires-mousquetaires/dp/2211307809?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=JGH04WMZTQ1Q\&amp;dib=eyJ2IjoiMSJ9.e3Qn9Ry8Im87sDct0au1paM0LFTihI4P82sst-MrZBFQvTaKjEMSP8q0RmWF59IDndtxqc75eRSIVgWgg-m8FTm9JSfu6l8nX3Ws9itlpXw.wCXT3JyZEQv184OHs1LLGVmHyBKvtyzd7eLdHfCM1FM\&amp;dib_tag=se\&amp;keywords=Trois+ou+quatre+histoires+de+mousquetaires\&amp;qid=1784914845\&amp;sprefix=trois+ou+quatre+histoires+de+mousquetaires%2Caps%2C218\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le petit prince  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06506.JPG" alt="Le petit prince" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06506.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le petit prince</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="boucle d&#x27;or et les 3 ours pages cartonnées excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06508.JPG" alt="Boucle d&#x27;or et les 3 ours" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06508.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06509.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06510.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Boucle d&#x27;or et les 3 ours</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>pages cartonnées</p>
+        <a class="btn" href="https://www.amazon.fr/Boucle-dor-trois-ours-COLLECTIF/dp/2508042048?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3DZC2LYI67HH9\&amp;dib=eyJ2IjoiMSJ9.3kdUKvBmQ8838zkmiwaXoIEEgbHDIitIuFZswtPafM4Kh6CeXipl64PupG8_tnSxUUTsZTePbdjXYz7nZQOKTiZG5tq38w4IzZGfbt5jpJVhn2zJ1M-CxV-Qv-LNV4Ni-rCt4350PgZhaEpvxqZ5lsMI3jUjq9EyiyLVP4Rte36GuLfKco_PnlIy7uPIpea9sbXRrzmp-ZiMdfdLwDVHSLUoEYO_usfc2Te7miZbEQVIGgrIQzTk4aJipNAwi_m0uedr6_PClDa8zllQ9qcIGh5nomq-0PqFtWF05iRzZ4s.d9THhhPlvkLMZlq0l6a4wyvjKEY_mKp52yuDa9VJtek\&amp;dib_tag=se\&amp;keywords=boucle+d%27or+cartonn%C3%A9e\&amp;qid=1784914349\&amp;sprefix=boucle+d%27or+cartonn%2Caps%2C203\&amp;sr=8-25" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="boîte à questions 9/10 ans  excellent" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06586.JPG" alt="Boîte à questions 9/10 ans" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06586.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06587.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Boîte à questions 9/10 ans</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Sp%C3%A9cial-10-ans-bo%C3%AEte-cartes/dp/2016254106?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=1MXJNBRG99YA9\&amp;dib=eyJ2IjoiMSJ9.c_SXGP1MSyOLQm6W0k5KnLrfmOnZFDrvfK2BV2CXnQFTDlkM8ut67XsB24O7SXlpERoaEuXYzPbfyZ4W4BPdXTQhM8nTWGOq3JzBYB27IPU.8jvxU17nFy-TC6pmMDcPlACo31Wjz_X1tJ0ccmplTlw\&amp;dib_tag=se\&amp;keywords=Sp%C3%A9cial+9%2F10+ans\&amp;qid=1784976937\&amp;s=books\&amp;sprefix=sp%C3%A9cial+9%2F10+ans%2Cstripbooks%2C171\&amp;sr=1-2" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le club de la pluie brave les tempêtes  excellent" data-price="40">
+    <div class="photo">
+        <img class="main" src="DSC06492.JPG" alt="Le club de la pluie brave les tempêtes" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06492.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le club de la pluie brave les tempêtes</h2>
+        <div class="price">40 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Club-Pluie-brave-temp%C3%AAtes/dp/2211302076?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=36NE8XRV4EP3M\&amp;dib=eyJ2IjoiMSJ9.zAkyA44mOs0zTEryvZL13A.OsBN0iHnqYuClpLdgvpzg5T6OLqnpbRYKR98gbIkC-g\&amp;dib_tag=se\&amp;keywords=Le+club+de+la+pluie+brave+les+temp%C3%AAtes\&amp;qid=1784913882\&amp;sprefix=le+club+de+la+pluie+brave+les+temp%C3%AAtes%2Caps%2C243\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le club de la pluie et les forbans de la nuit  excellent" data-price="40">
+    <div class="photo">
+        <img class="main" src="DSC06495.JPG" alt="Le club de la pluie et les forbans de la nuit" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06495.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le club de la pluie et les forbans de la nuit</h2>
+        <div class="price">40 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Club-Pluie-Forbans-nuit/dp/2211228224?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3W0X380DGF97B\&amp;dib=eyJ2IjoiMSJ9.P6TfS4jjFQ05LmNYQJQhfg.DO62znSaAgCXYU7jktEAV5RmxTbZ4OtujZEHMWMwLWw\&amp;dib_tag=se\&amp;keywords=Le+club+de+la+pluie+et+les+forbans+de+la+nuit\&amp;qid=1784913916\&amp;sprefix=le+club+de+la+pluie+et+les+forbans+de+la+nuit%2Caps%2C470\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="je sais lire - les petites poules - 4 livres 10 dhs chacun excellent" data-price="40">
+    <div class="photo">
+        <img class="main" src="DSC06588.JPG" alt="Je sais lire - les petites poules - 4 livres" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06588.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06589.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Je sais lire - les petites poules - 4 livres</h2>
+        <div class="price">40 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        <p>10 DHS chacun</p>
+        
+    </div>
+</article>
+<article class="card" data-title="adieu pompéi  bon" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06496.JPG" alt="Adieu Pompéi" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06496.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Adieu Pompéi</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Adieu-Pomp%C3%A9i-Niveau-lecteurs-Roman/dp/2011181259?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=B8XR3AJE9VG2\&amp;dib=eyJ2IjoiMSJ9.BP854PyLc2rWONoCasLuRLLiaN8IiLLY2AxcSlCcIzE.tlD8lqDYh67SFKH4pfYSuHITNquvl5WExX_yxrDWVag\&amp;dib_tag=se\&amp;keywords=adieu+pomp%C3%A9i\&amp;qid=1784913965\&amp;sprefix=adieu+pomp%C3%A9%2Caps%2C292\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="pompéi, la ville ensevelie  bon" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06497.JPG" alt="Pompéi, la ville ensevelie" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06497.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Pompéi, la ville ensevelie</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Pomp%C3%A9i-ville-ensevelie-Niveau-lecteurs/dp/2011174945?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=2MLTTF7UAE0KV\&amp;dib=eyJ2IjoiMSJ9.lCWit5-dx--wcNk9lop9uohkTC0RjH9Aret5OeYb4TxmzY-0JKrpuQP9LRYOXnT_L5sjKy9ntQSB2CHXQlOURF7rqBVqCOhPw5MqhPYEDtkyOnRcleenjUaAYs-4R7rD--VOwgzWMKS0ecf_CWwQhCpKqC6FuO0RzF30VW4DlBCy7yArO3cYgNokYv5yAYhV.F5jj_AMjDyIlVXr2Rv3EpOCbtsANC2It67OSLMEPWe0\&amp;dib_tag=se\&amp;keywords=pomp%C3%A9i+la+ville+ensevelie\&amp;qid=1784914020\&amp;sprefix=pomp%C3%A9i+la+ville+enseveli%2Caps%2C247\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="le système solaire  bon" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06498.JPG" alt="Le système solaire" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06498.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Le système solaire</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/syst%C3%A8me-solaire-Niveau-lecteurs-Ed-2010/dp/2011174910?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=33BVLKPCLFMXQ\&amp;dib=eyJ2IjoiMSJ9.RV8MOHIkCv6m3nMGiQssQA.OublZPJc5dtv1-hCqoxh0zIqZHbkfpAwb7GFvu_Vu0g\&amp;dib_tag=se\&amp;keywords=syst%C3%A8me+solaire+hachette+niveau+4\&amp;qid=1784914063\&amp;sprefix=syst%C3%A8me+solaire+hachette+niveau+%2Caps%2C263\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="planète en danger  bon" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06499.JPG" alt="Planète en danger" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06499.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Planète en danger</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Plan%C3%A8te-danger-Niveau-lecteurs-Ed-2010/dp/201117497X?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=3UID2FZV8MJS5\&amp;dib=eyJ2IjoiMSJ9.vxKxpnBhQERWIB3WjWrFEqU8xZQOuhnoLOT3hxJukmA.y9ZJdyNEbH2HGEzr0ahFX0UPHMOIreSUoo3nxODxff8\&amp;dib_tag=se\&amp;keywords=planete+en+danger+hachette\&amp;qid=1784914094\&amp;sprefix=splanete+en+danger+hachette%2Caps%2C246\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="osbserver le ciel  bon" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06500.JPG" alt="Osbserver le ciel" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06500.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Osbserver le ciel</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Observer-ciel-Niveau-lecteurs-Ed-2010/dp/2011174996?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=18EHOKML5ASP5\&amp;dib=eyJ2IjoiMSJ9._laJJEBTa5BioPVhBDyB5q50qZF-pzWzyS5nXyYoipbMsC49suhKG2BbAqEPcjRUPdssDimVJs2zw8UZ1-oKhUg_Q3LaL_uBc6pT4PM6Sr6SiWUQ2AXloBgs6utrSumg71wfa1RYUlRXBAHkPiEWnnHs7LvOZ_n0SdQzjSY7Y5kxlr69IH4JvGYgfRHDd9-Ae3m3cnhNxG-EXDrjF5VF7k-uLP76jZpo9979Lwo5eXyaUwzY48i1-YZRiOQToQgiBd8171ulC7GISOOf5C4lUtFyqPMaY_UEsBeC3-vwpe4.90EZrqWfHeos7rI2jmzZUPps00kcKCzwqAkl7Q7Q2Wg\&amp;dib_tag=se\&amp;keywords=observer+le+ciel\&amp;qid=1784914122\&amp;sprefix=observer+le+cie%2Caps%2C264\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="heidi  excellent" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06441.JPG" alt="Heidi" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06441.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Heidi</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="voyage au centre de la terre  excellent" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06442.JPG" alt="Voyage au centre de la terre" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06442.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Voyage au centre de la terre</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+<article class="card" data-title="les malheurs de sophie  excellent" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06443.JPG" alt="Les malheurs de Sophie" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06443.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Les malheurs de Sophie</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        
+    </div>
+</article>
+</main>
+<div id="lightbox" onclick="closeImage()">
+    <span id="close">&times;</span>
+    <img id="lightboxImage" src="" alt="">
+</div>
+<script>
+function swapImage(thumbnail) {
+    const card = thumbnail.closest(".card");
+    card.querySelector(".main").src = thumbnail.src;
+}
+function openImage(src) {
+    document.getElementById("lightboxImage").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeImage();
+});
+const search = document.getElementById("search");
+const sort = document.getElementById("sort");
+const grid = document.getElementById("grid");
+if (grid) {
+    const cards = [...grid.children];
+    function updateBooks() {
+        const query = search.value.toLowerCase();
+        cards.forEach(card => {
+            card.style.display = card.dataset.title.includes(query) ? "" : "none";
+        });
+        cards.sort((a, b) => {
+            if (sort.value === "title") return a.dataset.title.localeCompare(b.dataset.title);
+            if (sort.value === "asc") return Number(a.dataset.price) - Number(b.dataset.price);
+            return Number(b.dataset.price) - Number(a.dataset.price);
+        });
+        cards.forEach(card => grid.appendChild(card));
+    }
+    search.addEventListener("input", updateBooks);
+    sort.addEventListener("change", updateBooks);
+    updateBooks();
+}
+</script>
+</body>
+</html>

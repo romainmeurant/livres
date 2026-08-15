@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Langue - Second-hand Books</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f5;
+    color: #24323d;
+}
+header {
+    background: #234f70;
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+header h1 { margin: 0 0 8px; font-size: 32px; }
+header p { margin: 0; opacity: .9; }
+nav {
+    background: white;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+}
+nav a {
+    color: #234f70;
+    text-decoration: none;
+    padding: 7px 11px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+nav a:hover { background: #e8f0f5; }
+.controls {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+input, select {
+    padding: 11px 13px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+}
+.photo { padding: 15px 15px 0; }
+.main {
+    width: 100%;
+    height: 470px;
+    object-fit: contain;
+    background: #fafafa;
+    cursor: pointer;
+}
+.thumbs {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 10px 0 3px;
+}
+.thumb {
+    height: 82px;
+    width: 82px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+.thumb:hover { border-color: #234f70; }
+.info { padding: 16px 18px 20px; }
+.info h2 { margin: 0 0 10px; font-size: 22px; }
+.price {
+    color: #c62828;
+    font-size: 34px;
+    font-weight: bold;
+    margin: 5px 0 9px;
+}
+.badge {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.badge.excellent { background: #2e7d32; }
+.badge.very-good { background: #1565c0; }
+.badge.good { background: #ef6c00; }
+.badge.bon { background: #ef6c00; }
+.badge.très-bon { background: #1565c0; }
+.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.neuf { background: #00897b; }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #234f70;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.btn:hover { background: #17384f; }
+.home {
+    display: inline-block;
+    margin: 18px 20px 0;
+    color: #234f70;
+    text-decoration: none;
+    font-weight: bold;
+}
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.88);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+#close {
+    position: fixed;
+    top: 15px;
+    right: 22px;
+    color: white;
+    font-size: 38px;
+    cursor: pointer;
+}
+.category-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.category {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    color: #24323d;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+    transition: transform .15s;
+}
+.category:hover { transform: translateY(-3px); }
+.category h2 { margin: 0 0 10px; color: #234f70; }
+.category p { margin: 0; }
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; padding: 12px; }
+    .main { height: 390px; }
+    header h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Langue</h1>
+    <p>6 références</p>
+</header>
+<nav>
+<a href="index.html">Home</a>
+<a href="langue.html" style="font-weight:bold;background:#e8f0f5;">Langue</a>
+<a href="maths.html">Maths</a>
+<a href="cuisine.html">Cuisine</a>
+<a href="reconversion.html">Reconversion ?</a>
+<a href="informatique.html">Informatique</a>
+<a href="enfants-francais.html">Livres en français pour enfants</a>
+<a href="livres-francais.html">Livres en français</a>
+<a href="enfants-anglais.html">English books for children</a>
+<a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+</nav>
+<div class="controls">
+    <input id="search" type="search" placeholder="Search...">
+    <select id="sort">
+        <option value="desc">Price high → low</option>
+        <option value="asc">Price low → high</option>
+        <option value="title">Title A → Z</option>
+    </select>
+</div>
+<main class="grid" id="grid">
+<article class="card" data-title="bescherelle espagnol (en français : grammaire/verbe/vocabulaire)  bon" data-price="150">
+    <div class="photo">
+        <img class="main" src="DSC06400.JPG" alt="Bescherelle espagnol (en français : grammaire/verbe/vocabulaire)" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06400.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Bescherelle espagnol (en français : grammaire/verbe/vocabulaire)</h2>
+        <div class="price">150 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Bescherelle-verbes-espagnols-Francis-Mateo/dp/2218926172?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=L8H3QOW9Q9O8\&amp;dib=eyJ2IjoiMSJ9.zpypldWo9lYS7vzR-iQAu796CVd0R0c8fe8Vm0zwyeN29baZAPxa4W_VQeVPytBmi19CQRAPn6xWk3dIBoiHDSCPZitSHvvz2Mxrs73E--pctNlPtyzEm0l5eLWDN7aZMkp2UUQQOjBYgaDxO8vMrJEjFF9iljLOkoViegaW9q0CkUFu_n1r7FTXyARxYSNcdkUsPH-vukJwuOl8rzca3x80Ia93w6hAS3c7vXgpMbt3kCzCqpSZUv9oekb3-WBlVRpCeTAfKr3CUu6GZ6_3x4IfLY80ASTwco2oYIBXJMk.ezzwsvOswgb6VfDkT5tIKxYI83cnWLipQzhan6rlXDM\&amp;dib_tag=se\&amp;keywords=bescherelle+espagnol\&amp;qid=1784992594\&amp;sprefix=bescherrel+espagno%2Caps%2C381\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="bescherelle (grammaire/conjugaison/orthographe)  bon" data-price="100">
+    <div class="photo">
+        <img class="main" src="DSC06401.JPG" alt="Bescherelle (grammaire/conjugaison/orthographe)" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06401.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Bescherelle (grammaire/conjugaison/orthographe)</h2>
+        <div class="price">100 DHS</div>
+        <span class="badge bon">Bon</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Bescherelle-conjugaison-pour-tous-r%C3%A9f%C3%A9rence/dp/2218951983?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=N9ZMVSR3UJNK\&amp;dib=eyJ2IjoiMSJ9.mqQ76ewGGs4waG0FPjOs8qzpNPMeEr8jB-A0L36wvmMfV70SZEj_b9aSxCJBRoN1d8kktl6y59LtLnKB3221QSix9zHwxaJ27mVFKkd08D6GNjmCEyHyIypX1OqIdzRAuGGjZOI5iRPIKsfcXFQe-A6OZTu5mqvofsm3od_uFZPB_oj38WAGor3zydWHFwf4nSHvwNPy446coTvuskHjWr-f-NmcDocPyZlMR8_INMj33TFYu-CWrULfnvlJxV38ufxCbv1Ccv-z0hEq1PNE-Lvz4-ZmZ0bIchV98-dUNFk.qORF-TBbFPFPK5eAggo1jkEOxc4vmUbWPHTZDH3FEf8\&amp;dib_tag=se\&amp;keywords=bescherelle\&amp;qid=1784992649\&amp;sprefix=bescherelle+%2Caps%2C211\&amp;sr=8-24" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="grammaire progressive du français (niveau débutant et niveau intermédiaire) partiellement complétés au crayon à papier anciens" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06402.JPG" alt="Grammaire progressive du français (niveau débutant et niveau intermédiaire)" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06402.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Grammaire progressive du français (niveau débutant et niveau intermédiaire)</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge anciens">Anciens</span>
+        <p>Partiellement complétés au crayon à papier</p>
+        
+    </div>
+</article>
+<article class="card" data-title="500 exercices de grammaire partiellement complétés au crayon à papier très bon" data-price="50">
+    <div class="photo">
+        <img class="main" src="DSC06403.JPG" alt="500 Exercices de grammaire" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06403.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>500 Exercices de grammaire</h2>
+        <div class="price">50 DHS</div>
+        <span class="badge très-bon">Très bon</span>
+        <p>Partiellement complétés au crayon à papier</p>
+        <a class="btn" href="https://www.amazon.fr/500-exercices-Grammaire-Niveau-B2/dp/2011554381?crid=2DXAH5M6BZY6M\&amp;dib=eyJ2IjoiMSJ9.fwdD198n1Mn7QSezPlZdECYXN3GHwHJ-Y57oBFXp4rrpXbPauXrGasr6-dLRilnLGbNZAWLn3rlb4cel7LqzKbKoQKl2Vuc0s-2ahNnMXgVJi9g9Maf5j_Xt9c76PnM8MQQP7toDiv1W5f5h84R8NsW_pvKol02YlXWVE3eKBhmLby9uLcNajCXErWoC_6aEc6FC_Q1PNqmucdXOofvknNVo2ASEnPBfOzi9ubJMzyPTnbgOAmM6ua6Kcq30Ecr7YpGW_39ka1X5cvJqRia_UNuZr4YWO8f0Tl2uE0iUvG0.0Qd4qFrUWh-Ft-KWJrvEcIh_q2kg0rG-zlDy4Xjme7Y\&amp;dib_tag=se\&amp;keywords=500+exercices+de+grammaire\&amp;qid=1784992705\&amp;sprefix=500+exercices+%2Caps%2C183\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="difficultés grammaticales  excellent" data-price="30">
+    <div class="photo">
+        <img class="main" src="DSC06404.JPG" alt="Difficultés grammaticales" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06404.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Difficultés grammaticales</h2>
+        <div class="price">30 DHS</div>
+        <span class="badge excellent">Excellent</span>
+        
+        <a class="btn" href="https://www.amazon.fr/Difficult%C3%A9s-Grammaticales-Lagane-R/dp/2035903262?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=2YTGQNOV6JZD2\&amp;dib=eyJ2IjoiMSJ9.qfahx8o6Wep7JdmQ8Y6G1q_w9PKzSVSYIyVgLW7iwrzogiR_Jh64a5yIFaBM0SR2.3POPHawH9T03UsbJdNIswff7nqt2_SmRx9fHh4N0vLM\&amp;dib_tag=se\&amp;keywords=difficult%C3%A9s+grammaticales+larousse\&amp;qid=1784992851\&amp;sprefix=difficult%C3%A9s+grammaticales+larousse%2Caps%2C173\&amp;sr=8-4" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+<article class="card" data-title="la grammaire anglaise de l&#x27;étudiant - berland-delépine avec exos - édition 2000 très ancien" data-price="20">
+    <div class="photo">
+        <img class="main" src="DSC06414.JPG" alt="La grammaire anglaise de l&#x27;étudiant - Berland-Delépine" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06414.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>La grammaire anglaise de l&#x27;étudiant - Berland-Delépine</h2>
+        <div class="price">20 DHS</div>
+        <span class="badge très-ancien">Très ancien</span>
+        <p>Avec exos - édition 2000</p>
+        <a class="btn" href="https://www.amazon.fr/grammaire-anglaise-l%C3%A9tudiant-S-Berland-Delephine/dp/2708006096?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91\&amp;crid=337Y5Y5R98O0E\&amp;dib=eyJ2IjoiMSJ9.Yrh-G7tZtUuyYti-gBp0O29dvnQg6lKy5p4GYQdIOrW90xJGrTElbljAKvSp-mgiHJk2kQ4C_FMzDHHizjSHfIEORgk7puwofiuouVpBOIwU_cxJnm4JYXcUEiQqbMmTrFeBfjj390tntwUUvph_vEGANY1w9fHiN3LhWZ9Iz2KP5_i-_LzNhIVmIZdJ139jidfJlza-iCBTOvqGfwz_TaQZl5o4i3WsR5gpbFoHC7MZRJCi7y0yxZ2cT496-XLV4JBaBXVlTM47r19i3Cxc3SHv_gxJ7GkVNeckvh7Y2kU.59YE3JTzi8EE6wTY1R9u2FZ-TGRhqkDc0uRMA493O-k\&amp;dib_tag=se\&amp;keywords=grammaire+anglais+delepine\&amp;qid=1784992872\&amp;sprefix=grammaire+anglais+delepine%2Caps%2C379\&amp;sr=8-13" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+</main>
+<div id="lightbox" onclick="closeImage()">
+    <span id="close">&times;</span>
+    <img id="lightboxImage" src="" alt="">
+</div>
+<script>
+function swapImage(thumbnail) {
+    const card = thumbnail.closest(".card");
+    card.querySelector(".main").src = thumbnail.src;
+}
+function openImage(src) {
+    document.getElementById("lightboxImage").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeImage();
+});
+const search = document.getElementById("search");
+const sort = document.getElementById("sort");
+const grid = document.getElementById("grid");
+if (grid) {
+    const cards = [...grid.children];
+    function updateBooks() {
+        const query = search.value.toLowerCase();
+        cards.forEach(card => {
+            card.style.display = card.dataset.title.includes(query) ? "" : "none";
+        });
+        cards.sort((a, b) => {
+            if (sort.value === "title") return a.dataset.title.localeCompare(b.dataset.title);
+            if (sort.value === "asc") return Number(a.dataset.price) - Number(b.dataset.price);
+            return Number(b.dataset.price) - Number(a.dataset.price);
+        });
+        cards.forEach(card => grid.appendChild(card));
+    }
+    search.addEventListener("input", updateBooks);
+    sort.addEventListener("change", updateBooks);
+    updateBooks();
+}
+</script>
+</body>
+</html>

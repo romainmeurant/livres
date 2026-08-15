@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livres en français - Second-hand Books</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f5;
+    color: #24323d;
+}
+header {
+    background: #234f70;
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+header h1 { margin: 0 0 8px; font-size: 32px; }
+header p { margin: 0; opacity: .9; }
+nav {
+    background: white;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+}
+nav a {
+    color: #234f70;
+    text-decoration: none;
+    padding: 7px 11px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+nav a:hover { background: #e8f0f5; }
+.controls {
+    max-width: 1400px;
+    margin: 18px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+input, select {
+    padding: 11px 13px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 22px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+}
+.photo { padding: 15px 15px 0; }
+.main {
+    width: 100%;
+    height: 470px;
+    object-fit: contain;
+    background: #fafafa;
+    cursor: pointer;
+}
+.thumbs {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 10px 0 3px;
+}
+.thumb {
+    height: 82px;
+    width: 82px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+.thumb:hover { border-color: #234f70; }
+.info { padding: 16px 18px 20px; }
+.info h2 { margin: 0 0 10px; font-size: 22px; }
+.price {
+    color: #c62828;
+    font-size: 34px;
+    font-weight: bold;
+    margin: 5px 0 9px;
+}
+.badge {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.badge.excellent { background: #2e7d32; }
+.badge.very-good { background: #1565c0; }
+.badge.good { background: #ef6c00; }
+.badge.bon { background: #ef6c00; }
+.badge.très-bon { background: #1565c0; }
+.badge.anciens, .badge.ancien, .badge.old, .badge.très-ancien { background: #757575; }
+.badge.neuf { background: #00897b; }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #234f70;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.btn:hover { background: #17384f; }
+.home {
+    display: inline-block;
+    margin: 18px 20px 0;
+    color: #234f70;
+    text-decoration: none;
+    font-weight: bold;
+}
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,.88);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+#close {
+    position: fixed;
+    top: 15px;
+    right: 22px;
+    color: white;
+    font-size: 38px;
+    cursor: pointer;
+}
+.category-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.category {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    color: #24323d;
+    box-shadow: 0 3px 12px rgba(0,0,0,.14);
+    transition: transform .15s;
+}
+.category:hover { transform: translateY(-3px); }
+.category h2 { margin: 0 0 10px; color: #234f70; }
+.category p { margin: 0; }
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; padding: 12px; }
+    .main { height: 390px; }
+    header h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Livres en français</h1>
+    <p>1 références</p>
+</header>
+<nav>
+<a href="index.html">Home</a>
+<a href="langue.html">Langue</a>
+<a href="maths.html">Maths</a>
+<a href="cuisine.html">Cuisine</a>
+<a href="reconversion.html">Reconversion ?</a>
+<a href="informatique.html">Informatique</a>
+<a href="enfants-francais.html">Livres en français pour enfants</a>
+<a href="livres-francais.html" style="font-weight:bold;background:#e8f0f5;">Livres en français</a>
+<a href="enfants-anglais.html">English books for children</a>
+<a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+</nav>
+<div class="controls">
+    <input id="search" type="search" placeholder="Search...">
+    <select id="sort">
+        <option value="desc">Price high → low</option>
+        <option value="asc">Price low → high</option>
+        <option value="title">Title A → Z</option>
+    </select>
+</div>
+<main class="grid" id="grid">
+<article class="card" data-title="riad sattouf - l&#x27;arabe du futur (6 tomes) et fadi le frère volé tome 1 120 dhs chacun bon" data-price="600">
+    <div class="photo">
+        <img class="main" src="DSC06731.JPG" alt="Riad Sattouf - L&#x27;arabe du futur (6 tomes) et Fadi le frère volé tome 1" loading="lazy" onclick="openImage(this.src)">
+        <div class="thumbs">
+            <img class="thumb" src="DSC06731.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06732.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+<img class="thumb" src="DSC06733.JPG" alt="" onclick="swapImage(this)" loading="lazy">
+        </div>
+    </div>
+    <div class="info">
+        <h2>Riad Sattouf - L&#x27;arabe du futur (6 tomes) et Fadi le frère volé tome 1</h2>
+        <div class="price">600 DHS</div>
+        <span class="badge bon">Bon</span>
+        <p>120 DHS chacun</p>
+        <a class="btn" href="https://www.amazon.fr/LArabe-du-futur-Riad-Sattouf/dp/2370730145?crid=AN6RM5J31GSX\&amp;dib=eyJ2IjoiMSJ9.Tcc4G_YRx5o-MqGBb1RG0LLgjjlwfl6W9fewzf64R_yevu1Cg_m87c7GoeLeLBl4ZIf23klJZ0uUY3o_XBvBuhvW7fOtp7k6f6GnnUYo-FMPpfwZWzG0bzcH2eeQjC8zvRTEPaNiMnfzMFIdDaSMAO1bBTOfOixxWz5oc2B3Y2uBoXGCooGTysYWodLSJQ31IWUWuKu22pFCTbQ9znpwKLLFLtlaiX9wjLKcHW_crH4iU6jxeJ5gFQ2aB2Z0otmtCUp_iPRvs6Eaq2N16AlAVWFEMldZ4S5Ztwbh5YElB_I.lq69OAIkvKxzAZ1sOkU1t5IVLlm99IDwegLY8TGhPug\&amp;dib_tag=se\&amp;keywords=l%27arabe+du+futur\&amp;qid=1786793033\&amp;sprefix=l%27arabe+du%2Caps%2C773\&amp;sr=8-1" target="_blank" rel="noopener">Link to Amazon</a>
+    </div>
+</article>
+</main>
+<div id="lightbox" onclick="closeImage()">
+    <span id="close">&times;</span>
+    <img id="lightboxImage" src="" alt="">
+</div>
+<script>
+function swapImage(thumbnail) {
+    const card = thumbnail.closest(".card");
+    card.querySelector(".main").src = thumbnail.src;
+}
+function openImage(src) {
+    document.getElementById("lightboxImage").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeImage();
+});
+const search = document.getElementById("search");
+const sort = document.getElementById("sort");
+const grid = document.getElementById("grid");
+if (grid) {
+    const cards = [...grid.children];
+    function updateBooks() {
+        const query = search.value.toLowerCase();
+        cards.forEach(card => {
+            card.style.display = card.dataset.title.includes(query) ? "" : "none";
+        });
+        cards.sort((a, b) => {
+            if (sort.value === "title") return a.dataset.title.localeCompare(b.dataset.title);
+            if (sort.value === "asc") return Number(a.dataset.price) - Number(b.dataset.price);
+            return Number(b.dataset.price) - Number(a.dataset.price);
+        });
+        cards.forEach(card => grid.appendChild(card));
+    }
+    search.addEventListener("input", updateBooks);
+    sort.addEventListener("change", updateBooks);
+    updateBooks();
+}
+</script>
+</body>
+</html>
