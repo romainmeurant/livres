@@ -7,41 +7,18 @@
 <style>
 * { box-sizing: border-box; }
 body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #eef2f5; color: #24323d; }
-header { background: #234f70; color: white; padding: 28px 20px; text-align: center; }
-header h1 { margin: 0 0 8px; font-size: 32px; }
+header { background: #234f70; color: white; padding: 35px 20px; text-align: center; }
+header h1 { margin: 0 0 8px; font-size: 34px; }
 header p { margin: 0; opacity: .9; }
 nav { background: white; padding: 12px 18px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; box-shadow: 0 2px 7px rgba(0,0,0,.12); }
 nav a { color: #234f70; text-decoration: none; padding: 7px 11px; border-radius: 7px; font-size: 14px; }
 nav a:hover { background: #e8f0f5; }
-.controls { max-width: 1400px; margin: 18px auto 0; padding: 0 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-input, select { padding: 11px 13px; border: 1px solid #ccd5db; border-radius: 8px; font-size: 16px; }
-.grid { max-width: 1400px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 22px; }
-.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,.14); }
-.photo { padding: 15px 15px 0; }
-.main { width: 100%; height: 470px; object-fit: contain; background: #fafafa; cursor: pointer; }
-.thumbs { display: flex; gap: 7px; overflow-x: auto; padding: 10px 0 3px; }
-.thumb { height: 82px; width: 82px; object-fit: cover; cursor: pointer; border: 2px solid #ddd; border-radius: 5px; }
-.thumb:hover { border-color: #234f70; }
-.info { padding: 16px 18px 20px; }
-.info h2 { margin: 0 0 10px; font-size: 22px; }
-.price { color: #c62828; font-size: 34px; font-weight: bold; margin: 5px 0 9px; }
-.badge { display: inline-block; padding: 5px 11px; border-radius: 20px; color: white; font-size: 14px; margin-bottom: 8px; }
-.badge.excellent { background: #2e7d32; }
-.badge.very-good, .badge.très-bon { background: #1565c0; }
-.badge.good, .badge.bon { background: #ef6c00; }
-.badge.old, .badge.ancien, .badge.anciens, .badge.très-ancien { background: #757575; }
-.badge.neuf { background: #00897b; }
-.btn { display: inline-block; margin-top: 10px; background: #234f70; color: white; text-decoration: none; padding: 10px 15px; border-radius: 8px; }
-.btn:hover { background: #17384f; }
-#lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.88); justify-content: center; align-items: center; padding: 20px; }
-#lightbox img { max-width: 95vw; max-height: 92vh; object-fit: contain; }
-#close { position: fixed; top: 15px; right: 22px; color: white; font-size: 38px; cursor: pointer; }
-.category-grid { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.category { background: white; border-radius: 15px; padding: 25px; text-decoration: none; color: #24323d; box-shadow: 0 3px 12px rgba(0,0,0,.14); transition: transform .15s; }
-.category:hover { transform: translateY(-3px); }
+.category-grid { max-width: 1100px; margin: 0 auto; padding: 35px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.category { background: white; border-radius: 15px; padding: 28px; text-decoration: none; color: #24323d; box-shadow: 0 3px 12px rgba(0,0,0,.14); transition: transform .15s, box-shadow .15s; }
+.category:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
 .category h2 { margin: 0 0 10px; color: #234f70; }
 .category p { margin: 0; }
-@media (max-width: 600px) { .grid { grid-template-columns: 1fr; padding: 12px; } .main { height: 390px; } header h1 { font-size: 26px; } }
+@media (max-width: 600px) { header h1 { font-size: 28px; } .category-grid { grid-template-columns: 1fr; padding: 20px 12px; } }
 </style>
 </head>
 <body>
@@ -50,27 +27,54 @@ input, select { padding: 11px 13px; border: 1px solid #ccd5db; border-radius: 8p
     <p>Books and other books for sale</p>
 </header>
 <nav>
-<a href="index.html">Home</a>
-<a href="langue.html">Langue</a>
-<a href="maths.html">Maths</a>
-<a href="cuisine.html">Cuisine</a>
-<a href="reconversion.html">Reconversion ?</a>
-<a href="informatique.html">Informatique</a>
-<a href="enfants-francais.html">Livres en français pour enfants</a>
-<a href="livres-francais.html">Livres en français</a>
-<a href="enfants-anglais.html">English books for children</a>
-<a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+    <a href="index.html">Home</a>
+    <a href="enfants-francais.html">Livres en français pour enfants</a>
+    <a href="enfants-anglais.html">English books for children</a>
+    <a href="enfants-arabe.html">Livres en arabe pour enfants</a>
+    <a href="livres-francais.html">Livres en français</a>
+    <a href="langue.html">Langue</a>
+    <a href="cuisine.html">Cuisine</a>
+    <a href="maths.html">Maths</a>
+    <a href="informatique.html">Informatique</a>
+    <a href="reconversion.html">Reconversion ?</a>
 </nav>
 <main class="category-grid">
-<a class="category" href="langue.html"><h2>Langue</h2><p>6 références</p></a>
-<a class="category" href="maths.html"><h2>Maths</h2><p>6 références</p></a>
-<a class="category" href="cuisine.html"><h2>Cuisine</h2><p>7 références</p></a>
-<a class="category" href="reconversion.html"><h2>Reconversion ?</h2><p>4 références</p></a>
-<a class="category" href="informatique.html"><h2>Informatique</h2><p>6 références</p></a>
-<a class="category" href="enfants-francais.html"><h2>Livres en français pour enfants</h2><p>45 références</p></a>
-<a class="category" href="livres-francais.html"><h2>Livres en français</h2><p>1 références</p></a>
-<a class="category" href="enfants-anglais.html"><h2>English books for children</h2><p>33 références</p></a>
-<a class="category" href="enfants-arabe.html"><h2>Livres en arabe pour enfants</h2><p>4 références</p></a>
+<a class="category" href="enfants-francais.html">
+    <h2>Livres en français pour enfants</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="enfants-anglais.html">
+    <h2>English books for children</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="enfants-arabe.html">
+    <h2>Livres en arabe pour enfants</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="livres-francais.html">
+    <h2>Livres en français</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="langue.html">
+    <h2>Langue</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="cuisine.html">
+    <h2>Cuisine</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="maths.html">
+    <h2>Maths</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="informatique.html">
+    <h2>Informatique</h2>
+    <p>View books</p>
+</a>
+<a class="category" href="reconversion.html">
+    <h2>Reconversion ?</h2>
+    <p>View books</p>
+</a>
 </main>
 </body>
 </html>
